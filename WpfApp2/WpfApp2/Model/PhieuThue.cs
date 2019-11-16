@@ -24,6 +24,7 @@ namespace WpfApp2.Model
         public int maKhachHang { get; set; }
         public Nullable<double> tienCoc { get; set; }
         public Nullable<System.DateTime> ngayThue { get; set; }
+        public Nullable<bool> trangThaiTraPhiTre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietPhieuThue> ChiTietPhieuThue { get; set; }

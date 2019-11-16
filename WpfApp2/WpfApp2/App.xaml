@@ -5,6 +5,9 @@
              StartupUri="Login.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <Visibility x:Key="isMenuCus">Collapsed</Visibility>
+            <Visibility x:Key="isMenuClerk">Collapsed</Visibility>
+            <Visibility x:Key="isMenuDisk">Collapsed</Visibility>
             <Visibility x:Key="isAddKh">Collapsed</Visibility>
             <Visibility x:Key="isAddTitle">Collapsed</Visibility>
             <Visibility x:Key="isReportTitle">Collapsed</Visibility>

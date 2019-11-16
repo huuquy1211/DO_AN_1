@@ -19,15 +19,15 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                     <ColumnDefinition Width="5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-               
+
                 <materialDesign:PackIcon Uid="0" Kind="CalendarHeart" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Beige" Grid.Column="0" Grid.Row="0"/>
-                <Button x:Name="btn_ReportTile" Height="50" Uid="0" FontSize="25" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Tựa Đề Yêu Thích" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Grid.Column="1" Grid.Row="0" Click="Btn_ReportTile_Click" />
-                
+                <Button x:Name="btn_ReportFamousTitle" Height="50" Uid="0" FontSize="25" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Tựa Đề Yêu Thích" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Grid.Column="1" Grid.Row="0" Click="Btn_ReportTile_Click" />
+
 
             </Grid>
             <Grid Grid.Column="1">
@@ -59,38 +59,40 @@
                     <ColumnDefinition Width="200*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
-                    <ComboBox Height="40"
-                         Width="200"
-                         FontFamily="Palatino Linotype"
-                         FontSize="14"
-                         Margin="20,10,0,0"
-                         VerticalAlignment="Top"
-                         HorizontalAlignment="Right"
-                         x:Name="cbxLoaiTua"
-                         materialDesign:HintAssist.Hint="Thời Gian"
-                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          materialDesign:TransitionAssist.DisableTransitions="True">
-                        <ComboBoxItem>Tuần</ComboBoxItem>
-                        <ComboBoxItem>Tháng</ComboBoxItem>
-                    </ComboBox>
+                    <DatePicker Height="30"  HorizontalAlignment="Left"  Margin="20,20,0,0" Name="dtp_TuNgay"  VerticalAlignment="Top" Width="227"/>
+
                 </Grid>
+                <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
+                    <DatePicker Height="30"  HorizontalAlignment="Right"  Margin="20,20,0,0" Name="dtp_DenNgay" VerticalAlignment="Top" Width="227"/>
+                </Grid>
+
                 <Grid Grid.Column="2" Margin="0,0,0,0.4">
-                    <Button x:Name="btnSearchNV"
+                    <Button x:Name="btnSearchYT"
                          Margin="10,10,0,0"
                         Grid.Column="1"
                         Width="35"
                         VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" Click="btnSearchYT_Click"
                         >
 
                         <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Search" Width="25" Height="17" >
                         </materialDesign:PackIcon>
                     </Button>
+                    <Button x:Name="btnPrintYT"
+                        Margin="60,10,0,0"
+                        Grid.Column="1"
+                        Width="35"
+                        VerticalAlignment="Center"
+                            HorizontalAlignment="Left" Click="btnPrintYT_Click"
+                        >
+                        <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Printer" Width="25" Height="17" RenderTransformOrigin="18.58,0.676" >
+                        </materialDesign:PackIcon>
+                    </Button>
                 </Grid>
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" >
                 <DataGrid Grid.Row="0"
-                     Name="dtgTitles"
+                      x:Name="dtgTitles"
                       Background="White"
                       BorderBrush="Black"
                       
@@ -104,12 +106,11 @@
                      ItemsSource="{Binding TitleReports}"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn/>
-                        <DataGridTextColumn Header="ID Đĩa" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}"/>
-                        <DataGridTextColumn Header="Giá thuê" Binding="{Binding Price}"/>
-                        <DataGridTextColumn Header="Loại tựa đề" Binding="{Binding Type}"/>
-                        <DataGridTextColumn Header="Số ngày thuê" Binding="{Binding DaysForRent}"/>
+                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding tenTuaDe}"/>
+                        <DataGridTextColumn Header="Số lượng đã thuê" Binding="{Binding soLuongDaThue}"/>
+                        <DataGridTextColumn Header="Giá thuê" Binding="{Binding donGia}"/>
+                        <DataGridTextColumn Header="Loại" Binding="{Binding loaiTuaDe}"/>
+
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
@@ -121,36 +122,38 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                   
+                    <ColumnDefinition Width="67*"/>
+                    <ColumnDefinition Width="133*"/>
+                    <ColumnDefinition Width="200*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0"  Margin="0,0,0,0.4">
-                    <ComboBox Height="40"
-                         Width="200"
-                         FontFamily="Palatino Linotype"
-                         FontSize="14"
-                         Margin="20,10,0,0"
-                         VerticalAlignment="Top"
-                         HorizontalAlignment="Right"
-                         x:Name="cbxLoaidia"
-                         materialDesign:HintAssist.Hint="Thời Gian"
-                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          materialDesign:TransitionAssist.DisableTransitions="True">
-                        <ComboBoxItem>Tuần</ComboBoxItem>
-                        <ComboBoxItem>Tháng</ComboBoxItem>
-                    </ComboBox>
+                <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
+                    <DatePicker Height="30"  HorizontalAlignment="Left"  Margin="20,20,0,0" Name="dtp_TuNgayQH" VerticalAlignment="Top" Width="227"/>
+
                 </Grid>
+                <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
+                    <DatePicker Height="30"  HorizontalAlignment="Right"  Margin="20,20,0,0" Name="dtp_DenNgayQH" VerticalAlignment="Top" Width="227"/>
+                </Grid>
+
                 <Grid Grid.Column="2" Margin="0,0,0,0.4">
-                    <Button x:Name="btnSearchdisk"
+                    <Button x:Name="btnSearchQH"
                          Margin="10,10,0,0"
                         Grid.Column="1"
                         Width="35"
                         VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Left" Click="btnSearchQH_Click"
                         >
 
                         <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Search" Width="25" Height="17" >
+                        </materialDesign:PackIcon>
+                    </Button>
+                    <Button x:Name="btnPrintQH"
+                        Margin="60,10,0,0"
+                        Grid.Column="1"
+                        Width="35"
+                        VerticalAlignment="Center"
+                            HorizontalAlignment="Left" Click="btnPrintQH_Click"
+                        >
+                        <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Printer" Width="25" Height="17" RenderTransformOrigin="18.58,0.676" >
                         </materialDesign:PackIcon>
                     </Button>
                 </Grid>
@@ -171,17 +174,17 @@
                      ItemsSource="{Binding TitleReports}"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn/>
-                        <DataGridTextColumn Header="ID Đĩa" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Loại tựa đề" Binding="{Binding Type}"/>
-                        <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding Quantity}"/>
-                        <DataGridTextColumn Header="Số điện thoại" Binding="{Binding Price}"/>
-                        <DataGridTextColumn Header="Ngày quá hạn" Binding="{Binding DaysForRent}"/>
+                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding tenTuaDeQH}"/>
+                        <DataGridTextColumn Header="Loại" Binding="{Binding loaiTuaDeQH}"/>
+                        <DataGridTextColumn Header="Số lượng đã thuê" Binding="{Binding soLuongThue}"/>
+                        <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding tenKhachHangQH}"/>
+                        <DataGridTextColumn Header="Số điện thoại" Binding="{Binding soDienThoai}"/>
+                        <DataGridTextColumn Header="Ngày quá hạn" Binding="{Binding soNgayTre}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" Visibility="{DynamicResource isReportDT}" >
+        <Grid Grid.Row="1" Visibility="{DynamicResource isReportDT}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="9*"/>
@@ -191,34 +194,38 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    
+
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0"  Margin="0,0,0,0.4">
-                    <ComboBox Height="40"
-                         Width="200"
-                         FontFamily="Palatino Linotype"
-                         FontSize="14"
-                         Margin="20,10,0,0"
-                         VerticalAlignment="Top"
-                         HorizontalAlignment="Right"
-                         x:Name="cbxDoanhthu"
-                         materialDesign:HintAssist.Hint="Thời Gian"
-                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          materialDesign:TransitionAssist.DisableTransitions="True">
-                        <ComboBoxItem>Tuần</ComboBoxItem>
-                        <ComboBoxItem>Tháng</ComboBoxItem>
-                    </ComboBox>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
+                        <DatePicker Height="30"  HorizontalAlignment="Left"  Margin="20,20,0,0" Name="dtp_TuNgayDT" VerticalAlignment="Top" Width="227"/>
+
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0.4">
+                        <DatePicker Height="30"  HorizontalAlignment="Right"  Margin="20,20,0,0" Name="dtp_DenNgayDT" VerticalAlignment="Top" Width="227"/>
+                    </Grid>
                 </Grid>
                 <Grid Grid.Column="2" Margin="0,0,0,0.4">
-                    <Button x:Name="btnDoanhthu"
+                    <Button x:Name="btnSearchDoanhthu"
                          Margin="10,10,0,0"
                         Grid.Column="1"
                         Width="35"
                         VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
+                        HorizontalAlignment="Left"
+                        Click="btnSearchDT_Click"
                         >
 
                         <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Search" Width="25" Height="17" >
+                        </materialDesign:PackIcon>
+                    </Button>
+                    <Button x:Name="btnPrintDT"
+                        Margin="60,10,0,0"
+                        Grid.Column="1"
+                        Width="35"
+                        VerticalAlignment="Center"
+                            HorizontalAlignment="Left" Click="btnPrintDT_Click"
+                        >
+                        <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Printer" Width="25" Height="17" RenderTransformOrigin="18.58,0.676" >
                         </materialDesign:PackIcon>
                     </Button>
                 </Grid>
@@ -239,11 +246,13 @@
                      ItemsSource="{Binding TitleReports}"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn/>
-                        <DataGridTextColumn Header="ID Đĩa" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Loại tựa đề" Binding="{Binding Type}"/>
-                        <DataGridTextColumn Header="Doanh thu" Binding="{Binding Quantity}"/>
-                        
+                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding tenTuaDeDT}"/>
+                        <DataGridTextColumn Header="Loại" Binding="{Binding loaiTuaDeDT}"/>
+                        <DataGridTextColumn Header="Số đĩa đã thuê" Binding="{Binding soLuongThue}"/>
+                        <DataGridTextColumn Header="Giá thuê" Binding="{Binding giaThue}"/>
+                        <DataGridTextColumn Header="Phí trễ" Binding="{Binding phiTre}"/>
+                        <DataGridTextColumn Header="Thành tiền" Binding="{Binding thanhTien}"/>
+
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

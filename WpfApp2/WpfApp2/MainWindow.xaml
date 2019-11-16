@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-      Title="Drop Down Menu" Height="600" Width="1000" WindowStartupLocation="CenterScreen" WindowState="Maximized" >
+      Title="PHẦN MỀM QUẢN LÝ CHO THUÊ ĐĨA" Height="600" Width="1000" WindowStartupLocation="CenterScreen" WindowState="Maximized" >
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -36,61 +36,113 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="5*"/>
-                
+
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background="GhostWhite">
                 <Image Source="Resource/share-files_1212-4.jpg" Stretch="Fill"/>
             </Grid>
             <Grid Grid.Row="1">
-                <StackPanel>
-                    
-                    <Button x:Name="Rent" Margin="10" Click="Rent_Click"   >
-                        <Grid Width="200">
-                            <materialDesign:PackIcon Kind="Responsive" VerticalAlignment="Center"/>
-                            <TextBlock HorizontalAlignment="Center" Text="THUÊ ĐĨA" FontFamily="Champagne &amp; Limousines"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="6*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        
+                            <Button Width="100" Height="90" x:Name="btn_MenuCus" Click="Btn_MenuCus_Click" >
+                                <StackPanel >
+                                    <materialDesign:PackIcon Kind="Account" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                    <TextBlock FontSize="12" HorizontalAlignment="Left">Khách hàng</TextBlock>
+                                </StackPanel>
+                                
+                            </Button>
+                        
+                    </Grid>
+                    <Grid Grid.Column="1">
+
+                        <Button Width="100" Height="90" x:Name="btn_MenuClerk" Click="Btn_MenuClerk_Click" >
+                            <StackPanel >
+                                <materialDesign:PackIcon Kind="CustomerService" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <TextBlock FontSize="12" HorizontalAlignment="Left">Nhân viên</TextBlock>
+                            </StackPanel>
+
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Column="2">
+
+                        <Button Width="100" Height="90" x:Name="btn_MenuDisk" Click="Btn_MenuDisk_Click" >
+                            <StackPanel >
+                                <materialDesign:PackIcon Kind="Disc" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <TextBlock FontSize="12" HorizontalAlignment="Center">Đĩa</TextBlock>
+                            </StackPanel>
+
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Visibility="{DynamicResource isMenuCus}">
+                    <StackPanel>
+                    <Button x:Name="btn_Rent" Margin="10 40 10 10" Background="#FF0F89DF" BorderBrush="#FF0F89DF" Click="Btn_Rent_Click"  >
+                        <Grid Width="170">
+                            <materialDesign:PackIcon Kind="CalendarAdd" VerticalAlignment="Center"/>
+                            <TextBlock HorizontalAlignment="Center" Text="Thuê Đĩa" FontFamily="Champagne &amp; Limousines"/>
                         </Grid>
                     </Button>
-                    <Button x:Name="Return" Margin="10" Click="Return_Click"   >
-                        <Grid Width="200">
-                            <materialDesign:PackIcon Kind="AssignmentReturn" VerticalAlignment="Center"/>
-                            <TextBlock HorizontalAlignment="Center" Text="TRẢ ĐĨA" FontFamily="Champagne &amp; Limousines"/>
-                        </Grid>
+                    <Button x:Name="btn_Return" Margin="10" Background="#FF0F89DF" BorderBrush="#FF0F89DF" Click="Btn_Return_Click" >
+                            <Grid Width="170">
+                                <materialDesign:PackIcon Kind="CalendarOutline" VerticalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Trả Đĩa" FontFamily="Champagne &amp; Limousines"/>
+                            </Grid>
                     </Button>
-                    <Button x:Name="Customer" Margin="10" Click="Customer_Click"  >
-                        <Grid Width="200">
-                            <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock HorizontalAlignment="Center" Text="QUẢN LÝ KHÁCH HÀNG" FontFamily="Champagne &amp; Limousines"/>
-                        </Grid>
-                    </Button>
-                    <Button x:Name="Title" Margin="10" Click="Title_Click"  >
-                        <Grid Width="200">
-                            <materialDesign:PackIcon Kind="Subtitles" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock HorizontalAlignment="Center" Text="QUẢN LÝ TỰA ĐỀ" FontFamily="Champagne &amp; Limousines"/>
-                        </Grid>
-                    </Button>
-                    <Button x:Name="Disk" Margin="10" Click="Disk_Click"  >
-                        <Grid Width="200">
-                            <materialDesign:PackIcon Kind="Disc" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock HorizontalAlignment="Center" Text="QUẢN LÝ ĐĨA" FontFamily="Champagne &amp; Limousines"/>
-                        </Grid>
-                    </Button>
-                    <Button x:Name="Employee" Margin="10" Click="Employee_Click"  >
-                        <Grid Width="200">
-                            <materialDesign:PackIcon Kind="AccountArrowRight" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock HorizontalAlignment="Center" Text="QUẢN LÝ NHÂN VIÊN" FontFamily="Champagne &amp; Limousines"/>
-                        </Grid>
-                    </Button>
-                    <Button x:Name="Report" Margin="10" Click="Report_Click"  >
-                        <Grid Width="200">
-                            <materialDesign:PackIcon Kind="Report" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock HorizontalAlignment="Center" Text="BÁO CÁO" FontFamily="Champagne &amp; Limousines"/>
-                        </Grid>
-                    </Button>
-                   
-                </StackPanel>
+                        <Button x:Name="btn_Customer" Margin="10" Background="#FF0F89DF" BorderBrush="#FF0F89DF" Click="Btn_Customer_Click" >
+                            <Grid Width="170">
+                                <materialDesign:PackIcon Kind="AccountCardDetails" VerticalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Right" Text="Thông Tin Khách Hàng" FontFamily="Champagne &amp; Limousines"/>
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Visibility="{DynamicResource isMenuClerk}">
+                    <StackPanel>
+                        <Button x:Name="btn_Clerk" Margin="10 40 10 10" Background="#FF0F89DF" BorderBrush="#FF0F89DF" Click="Btn_Clerk_Click" >
+                            <Grid Width="170">
+                                <materialDesign:PackIcon Kind="CalendarAdd" VerticalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Right" Text="Thông Tin Nhân Viên" FontFamily="Champagne &amp; Limousines"/>
+                            </Grid>
+                        </Button>
+                        <Button x:Name="btn_Report" Margin="10" Background="#FF0F89DF" BorderBrush="#FF0F89DF" Click="Btn_Report_Click" >
+                            <Grid Width="170">
+                                <materialDesign:PackIcon Kind="CalendarOutline" VerticalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Báo Cáo" FontFamily="Champagne &amp; Limousines"/>
+                            </Grid>
+                        </Button>
+                        
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Visibility="{DynamicResource isMenuDisk}">
+                    <StackPanel>
+                        <Button x:Name="btn_Title" Margin="10 40 10 10" Background="#FF0F89DF" BorderBrush="#FF0F89DF" Click="Btn_Title_Click" >
+                            <Grid Width="170">
+                                <materialDesign:PackIcon Kind="CalendarAdd" VerticalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Thông Tin Tựa Đề" FontFamily="Champagne &amp; Limousines"/>
+                            </Grid>
+                        </Button>
+                        <Button x:Name="btn_Disk" Margin="10" Background="#FF0F89DF" BorderBrush="#FF0F89DF" Click="Btn_Disk_Click" >
+                            <Grid Width="170">
+                                <materialDesign:PackIcon Kind="CalendarOutline" VerticalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Thông tin Đĩa" FontFamily="Champagne &amp; Limousines"/>
+                            </Grid>
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
             </Grid>
+
         </Grid>
-        <ContentControl Grid.Column="1" Grid.Row="1" Content="{Binding}"></ContentControl>
-        
+         <ContentControl Grid.Column="1" Grid.Row="1" Content="{Binding}"></ContentControl>
     </Grid>
 </Window>

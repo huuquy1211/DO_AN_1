@@ -117,15 +117,19 @@
       <DependentUpon>QLDia.tt</DependentUpon>
     </Compile>
     <Compile Include="RegExr.cs" />
-    <Compile Include="ViewModel\ChiTietPhieuThueViewModel.cs" />
-    <Compile Include="ViewModel\DiaViewModel.cs" />
-    <Compile Include="ViewModel\KhachHang.cs" />
-    <Compile Include="ViewModel\NhanVien.cs" />
-    <Compile Include="ViewModel\PhieuThue.cs" />
-    <Compile Include="ViewModel\PhieuTra.cs" />
-    <Compile Include="ViewModel\PhiTre.cs" />
-    <Compile Include="ViewModel\TaiKhoan.cs" />
-    <Compile Include="ViewModel\TuaDe.cs" />
+    <Compile Include="ViewModel\ChiTietPhieuThueVM.cs" />
+    <Compile Include="ViewModel\DiaQuaHanVM.cs" />
+    <Compile Include="ViewModel\DiaTraVM.cs" />
+    <Compile Include="ViewModel\DiaVM.cs" />
+    <Compile Include="ViewModel\DiskAddVM.cs" />
+    <Compile Include="ViewModel\DiskVM.cs" />
+    <Compile Include="ViewModel\DoanhThuVM.cs" />
+    <Compile Include="ViewModel\KhachHangVM.cs" />
+    <Compile Include="ViewModel\NhanVienVM.cs" />
+    <Compile Include="ViewModel\PhieuThueVM.cs" />
+    <Compile Include="ViewModel\PhieuTraVM.cs" />
+    <Compile Include="ViewModel\PhiTreVM.cs" />
+    <Compile Include="ViewModel\TuaDeVM.cs" />
     <Compile Include="Views\ClerkView.xaml.cs">
       <DependentUpon>ClerkView.xaml</DependentUpon>
     </Compile>
@@ -227,7 +231,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\share-files_1212-4.jpg" />
@@ -242,8 +248,8 @@
   <ItemGroup>
     <Content Include="Model\QLDia.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QLDia.Context.cs</LastGenOutput>
       <DependentUpon>QLDia.edmx</DependentUpon>
+      <LastGenOutput>QLDia.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\QLDia.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

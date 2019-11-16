@@ -24,7 +24,7 @@ namespace WpfApp2.Model
         public int maDia { get; set; }
         public int maPhieuThue { get; set; }
         public Nullable<System.DateTime> hanTra { get; set; }
-        public Nullable<int> soLuong { get; set; }
+        public Nullable<bool> trangThaiTra { get; set; }
     
         public virtual Dia Dia { get; set; }
         public virtual PhieuThue PhieuThue { get; set; }

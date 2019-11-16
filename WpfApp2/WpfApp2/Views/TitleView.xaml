@@ -67,6 +67,15 @@
                         Margin="20,0,20,5"
                         IsReadOnly="True"
                       
+                        materialDesign:HintAssist.Hint="Số ngày thuê"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                          x:Name="txtSongay"
+                          materialDesign:TransitionAssist.DisableTransitions="True" />
+                        <TextBox
+                        FontSize="14"
+                        Margin="20,0,20,5"
+                        IsReadOnly="True"
+                      
                         materialDesign:HintAssist.Hint="Số Lượng Đĩa"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                           x:Name="txtSL"
@@ -75,11 +84,11 @@
                         FontSize="14"
                         Margin="20,0,20,5"
                         IsReadOnly="True"
-                      
-                        materialDesign:HintAssist.Hint="Mô tả"
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          x:Name="txtMota"
-                          materialDesign:TransitionAssist.DisableTransitions="True" Grid.ColumnSpan="4" />
+                        x:Name="txtLoaiTua"
+                        materialDesign:HintAssist.Hint="Loại tựa"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            
+                        />
                         <Grid Visibility="{DynamicResource  isAddTitle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -87,10 +96,12 @@
                             </Grid.ColumnDefinitions>
                             <Button Grid.Column="0"
                                     Margin="2 20 2 2"
-                                    Content="Xác nhận"></Button>
+                                    Content="Xác nhận"
+                                    x:Name="btnSave" Click="BtnSave_Click"></Button>
                             <Button Grid.Column="1"
                                     Margin="2 20 2 2"
-                                    Content="Hủy"></Button>
+                                    Content="Hủy"
+                                    x:Name="btnCancel" Click="BtnCancel_Click"></Button>
                         </Grid>
 
                     </StackPanel>
@@ -124,27 +135,14 @@
                         materialDesign:HintAssist.Hint="Tìm kiếm"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         x:Name="txtSearch"
-                        materialDesign:TransitionAssist.DisableTransitions="True" Grid.Column="0"  />
+                        materialDesign:TransitionAssist.DisableTransitions="True" Grid.Column="0"  TextChanged="TxtSearch_TextChanged"/>
                 </Grid>
-                <Grid Grid.Column="1">
-                    <Button x:Name="btnSearch"
-                         Margin="10,10,0,0"
-                        Grid.Column="1"
-                        Width="35"
-                        VerticalAlignment="Top"
-                            HorizontalAlignment="Left"
-                        >
-
-                        <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Search" Width="25" Height="17" >
-                        </materialDesign:PackIcon>
-                    </Button>
-                </Grid>
+               
             </Grid>
             <Grid Grid.Row="1">
-                <DataGrid x:Name="grvResever" 
+                <DataGrid x:Name="grvTitle" 
                       Background="AliceBlue"
                       BorderBrush="Black"
-                      
                       BorderThickness="1"
                       Margin="0,0,0,0"
                       IsReadOnly="True"
@@ -153,30 +151,40 @@
                       AutoGenerateColumns="False"
                       materialDesign:DataGridAssist.CellPadding="13 8 8 8"
                       materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                     ItemsSource="{Binding Resevers}" Grid.RowSpan="2"
+                     ItemsSource="{Binding Titles}" Grid.RowSpan="2" SelectionChanged="GrvTitle_SelectionChanged" 
+                          
                       >
                     <DataGrid.Columns>
 
                         <materialDesign:MaterialDataGridTextColumn
-                      Binding="{Binding Id}"
+                      Binding="{Binding maTuaDe}"
                       Header="ID" />
                         <materialDesign:MaterialDataGridTextColumn
                             Width="100"
-                      Binding="{Binding Titlename}"
+                      Binding="{Binding tenTuaDe}"
                       Header="Tên Tựa Đề"/>
                         <materialDesign:MaterialDataGridTextColumn
-                      Binding="{Binding Type}"
+                            Width="100"
+                      Binding="{Binding moTa}"
+                      Header="Loại Tựa"/>
+                        <materialDesign:MaterialDataGridTextColumn
+                      Binding="{Binding donGia}"
                       Header="Đơn Giá"/>
                         <materialDesign:MaterialDataGridTextColumn
                        Width="100"
-                      Binding="{Binding CountCustomer}"
+                      Binding="{Binding ngayChoThue}"
+                      Header="Số Ngày Thuê"/>
+                        <materialDesign:MaterialDataGridTextColumn
+                       Width="100"
+                      Binding="{Binding soLuong}"
                       Header="Số Lượng Đĩa"/>
+
                         <DataGridTemplateColumn Header="Cập nhật">
                             <DataGridTemplateColumn.CellTemplate >
                                 <DataTemplate>
                                     <Button x:Name="btnUpdate"
                                             Width="35"
-                                            CommandParameter="{Binding Id}" 
+                                            CommandParameter="{Binding Id}" Click="BtnUpdate_Click" 
                                            >
                                         <materialDesign:PackIcon Kind="Update" 
                                                                     Margin="-12,-9,-5,-80" Width="25" Height="17" >
@@ -191,7 +199,7 @@
                                     <Button 
                                         Width="35" 
                                         Background="Red"
-                                        x:Name="btnDelete"
+                                        x:Name="btnDelete" Click="BtnDelete_Click"
                                         >
                                         <materialDesign:PackIcon Kind="Trash"  Margin="-12,-9,-5,-80" Width="25" Height="17">
                                         </materialDesign:PackIcon>
@@ -199,7 +207,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        
+
 
                     </DataGrid.Columns>
 
@@ -207,4 +215,5 @@
             </Grid>
         </Grid>
     </Grid>
+
 </UserControl>

@@ -17,10 +17,8 @@ namespace WpfApp2.Model
         public int maNhanVien { get; set; }
         public int maTaiKhoan { get; set; }
         public string hoTen { get; set; }
-        public Nullable<System.DateTime> ngayKyHopDong { get; set; }
         public string diaChi { get; set; }
         public string soDienThoai { get; set; }
-        public string loaiNhanVien { get; set; }
     
         public virtual TaiKhoan TaiKhoan { get; set; }
     }

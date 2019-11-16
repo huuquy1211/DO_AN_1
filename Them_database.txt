@@ -1,0 +1,10 @@
+- them:
+	trangThaiTra (bit) vào ChiTietPhieuThue, 
+	ngayChoThue (int) vào TuaDe,
+	tinhTrangThanhToan (bit) vào bảng PhiTre
+	tinhTrangTraPhiTre (bit) vào PhieuThue
+- sua: 
+	phiTre trong PhiTre thành tongTien
+	trangThai trong Dia thanh int
+- xoa:
+	soLuong trong ChiTietPhieuThue

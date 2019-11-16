@@ -64,3 +64,117 @@ C:\Users\Admin\Desktop\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\TitleView.g.cs
 C:\Users\Admin\Desktop\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\TitleView.baml
 C:\Users\Admin\Desktop\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\ReportView.g.cs
 C:\Users\Admin\Desktop\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\ReportView.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\bin\Debug\WpfApp2.pdb
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.dll
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Login.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Login.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\MainWindow.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\ClerkView.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\Customer.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\Disk.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\RentView.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\ReportView.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\ReturnView.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\TitleView.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\App.g.cs
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.cache
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.lref
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\App.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\MainWindow.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\ClerkView.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\Customer.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\Disk.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\RentView.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\ReportView.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\ReturnView.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\Views\TitleView.baml
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2.g.resources
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2.Properties.Resources.resources
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CopyComplete
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
+C:\Users\Admin\Desktop\PTUD1\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\bin\Debug\WpfApp2.pdb
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.dll
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.pdb
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csprojAssemblyReference.cache
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Login.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Login.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\MainWindow.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\ClerkView.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\Customer.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\Disk.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\RentView.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\ReportView.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\ReturnView.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\TitleView.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\App.g.cs
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.cache
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.lref
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\App.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\MainWindow.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\ClerkView.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\Customer.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\Disk.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\RentView.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\ReportView.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\ReturnView.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\Views\TitleView.baml
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2.g.resources
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2.Properties.Resources.resources
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResource.cache
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CopyComplete
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
+C:\Users\QUY\Downloads\WpfApp2 (1)\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe.config
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\bin\Debug\WpfApp2.exe
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\bin\Debug\WpfApp2.pdb
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.dll
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\bin\Debug\MaterialDesignColors.pdb
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csprojAssemblyReference.cache
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Login.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Login.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\MainWindow.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\ClerkView.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\Customer.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\Disk.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\RentView.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\ReportView.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\ReturnView.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\TitleView.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\App.g.cs
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.cache
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2_MarkupCompile.lref
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\App.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\MainWindow.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\ClerkView.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\Customer.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\Disk.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\RentView.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\ReportView.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\ReturnView.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\Views\TitleView.baml
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2.g.resources
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2.Properties.Resources.resources
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.GenerateResource.cache
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CoreCompileInputs.cache
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2.csproj.CopyComplete
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2.exe
+D:\STUDY\HOCTAP\HK8\PTUD\NHOM_18\PTUD\WpfApp2\WpfApp2\obj\Debug\WpfApp2.pdb

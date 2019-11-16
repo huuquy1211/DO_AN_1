@@ -40,8 +40,8 @@
                                 Padding="30 5"
                               VerticalAlignment="Bottom"
                               ItemsSource="{Binding ListCDHasRent}"
-                              SelectedValue="Id"
-                                DisplayMemberPath="Id" 
+                              SelectedValue="maDia"
+                                DisplayMemberPath="maDia" 
                                 >
 
                                 <ComboBox.ItemContainerStyle>
@@ -54,8 +54,8 @@
                                                             <ColumnDefinition/>
                                                             <ColumnDefinition/>
                                                         </Grid.ColumnDefinitions>
-                                                        <TextBlock Margin="5" Grid.Column="0" Text="{Binding Id}"/>
-                                                        <TextBlock Margin="5" Grid.Column="1" Text="{Binding Title}"/>
+                                                        <TextBlock Margin="5" Grid.Column="0" Text="{Binding maDia}"/>
+                                                        <TextBlock Margin="5" Grid.Column="1" Text="{Binding tenTuaDe}"/>
                                                     </Grid>
                                                     <ControlTemplate.Triggers>
                                                         <Trigger Property="ComboBoxItem.IsSelected" Value="True">
@@ -93,7 +93,7 @@
                                     FontSize="13"
                                     Padding="15 0"
                                     IsReadOnly="True"
-                                    Text="{Binding ElementName=cbbReturn, Path=SelectedItem.Title}"
+                                    Text="{Binding ElementName=cbbReturn, Path=SelectedItem.tuaDe}"
                                     materialDesign:HintAssist.Hint="Tựa đề"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                       x:Name="tbTuaDe"
@@ -102,7 +102,7 @@
                                             FontSize="13"
                                             Padding="15 0"
                                             IsReadOnly="True"
-                                            Text="{Binding ElementName=cbbReturn, Path=SelectedItem.Type}"
+                                            Text="{Binding ElementName=cbbReturn, Path=SelectedItem.loai}"
                                             materialDesign:HintAssist.Hint="Loại đĩa"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                               x:Name="tbLoaiDiaTra"
@@ -114,7 +114,7 @@
                                 FontSize="13"
                                 Padding="15 0"
                                 IsReadOnly="True"
-                                Text="{Binding ElementName=cbbReturn, Path=SelectedItem.Customer.FullName}"
+                                Text="{Binding ElementName=cbbReturn, Path=SelectedItem.KhachHang.hoTen}"
                                 materialDesign:HintAssist.Hint="Khách Hàng"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   x:Name="tbKH"
@@ -125,7 +125,7 @@
                                 FontSize="13"
                                 Padding="15 0"
                                 IsReadOnly="True"
-                                Text="{Binding ElementName=cbbReturn, Path=SelectedItem.Customer.Phone}"
+                                Text="{Binding ElementName=cbbReturn, Path=SelectedItem.KhachHang.soDienThoai}"
                                 materialDesign:HintAssist.Hint="Số điện thoại"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   x:Name="tbSDTTra"
@@ -134,7 +134,7 @@
                                 Padding="15 0"
                                 FontSize="13"
                                 IsReadOnly="True"
-                                Text="{Binding ElementName=cbbReturn, Path=SelectedItem.Customer.Address}"
+                                Text="{Binding ElementName=cbbReturn, Path=SelectedItem.KhachHang.diaChi}"
                               x:Name="tbDiaChi"
                               materialDesign:HintAssist.Hint="Địa chỉ"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.ColumnSpan="3"  />
@@ -158,6 +158,7 @@
                          Grid.Column="0"
                         x:Name="btnThemCTPhieuTra"
                         Width="200"
+                    Click="BtnThemCTPhieuTra_Click"
                        HorizontalAlignment="Center"
                         Style="{StaticResource MaterialDesignRaisedAccentButton}"
                         Foreground="White"
@@ -168,11 +169,14 @@
                             HorizontalAlignment="Center"
                              Grid.Column="1"
                             Width="200"
+                    IsEnabled="False"
                             x:Name="btnXoa"
+                    Click="BtnXoa_Click"
                             Style="{StaticResource MaterialDesignRaisedAccentButton}"
                             Foreground="White"
                             Background="#FF2B2580"
-                            ToolTip="Xóa chi tiết phiếu trả" Content="Xóa" Height="41"  Grid.Row="1"/>
+                            ToolTip="Xóa chi tiết phiếu trả" Content="Xóa" Height="41"  Grid.Row="1"
+                    />
             </Grid>
 
         </StackPanel>
@@ -182,6 +186,7 @@
                       x:Name="DataGridPhieuTra"
                       IsReadOnly="True"
                        CanUserSortColumns="True"
+                      SelectionChanged="DataGridPhieuTra_SelectionChanged"
                       Background="#89A6E1F3"
                       CanUserAddRows="False"
                       AutoGenerateColumns="False"
@@ -190,23 +195,27 @@
                 <DataGrid.Columns>
                     <materialDesign:MaterialDataGridTextColumn
                         Width="100"
-                      Binding="{Binding Id}"
+                      Binding="{Binding maDia}"
                       Header="Mã Đĩa"/>
                     <materialDesign:MaterialDataGridTextColumn
                         Width="300"
-                      Binding="{Binding TitleName}"
+                      Binding="{Binding tenTuaDe}"
                       Header="Tựa Đề"/>
                     <materialDesign:MaterialDataGridTextColumn
-                      Binding="{Binding TypeTitle}"
+                      Binding="{Binding loai}"
                       Header="Loại"/>
                     <materialDesign:MaterialDataGridTextColumn
                         Width="150"
-                      Binding="{Binding Customer.FullName}"
+                      Binding="{Binding KhachHang.hoTen}"
                       Header="Khách Hàng"/>
                     <materialDesign:MaterialDataGridTextColumn
                         Width="150"
-                      Binding="{Binding RentalDate}"
+                      Binding="{Binding ngayThue}"
                       Header="Ngày Thuê"/>
+                    <materialDesign:MaterialDataGridTextColumn
+                        Width="150"
+                      Binding="{Binding soNgayThue}"
+                      Header="Số Ngày Thuê"/>
                     <DataGridCheckBoxColumn
                         Binding="{Binding isLate}"
                         Header="Trễ Hạn"
@@ -219,6 +228,8 @@
         <Button
                 Grid.Row="1"
                 x:Name="btnLapPhieuTra"
+            IsEnabled="True"
+            Click="BtnLapPhieuTra_Click"
                 VerticalAlignment="Bottom"
                 Margin="302,0,302,40"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"

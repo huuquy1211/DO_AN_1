@@ -23,20 +23,17 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
+        Disk d1;
         public MainWindow()
         {
             InitializeComponent();
+          
+
+
         }
 
-        private void Rent_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new RentView();
-        }
 
-        private void Return_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new ReturnView();
-        }
+        
         private void Logout_Selected(object sender, RoutedEventArgs e)
         {
             Login l = new Login();
@@ -50,30 +47,112 @@ namespace WpfApp2
             this.Close();
         }
 
-        private void Customer_Click(object sender, RoutedEventArgs e)
+        private void Btn_MenuCus_Click(object sender, RoutedEventArgs e)
         {
-            
-            DataContext = new Customer();
+
+            int index = 0;
+            try
+            {
+                index = int.Parse(((Button)e.Source).Uid);
+            }
+            catch (Exception)
+            {
+                //index = int.Parse(((PackIcon)e.Source).Uid);
+            }
+
+            switch (index)
+            {
+                case 0:
+                    Application.Current.Resources["isMenuCus"] = Visibility.Visible;
+                    Application.Current.Resources["isMenuClerk"] = Visibility.Collapsed;
+                    Application.Current.Resources["isMenuDisk"] = Visibility.Collapsed;
+
+
+
+                    break;
+
+            }
         }
 
-        private void Disk_Click(object sender, RoutedEventArgs e)
+        private void Btn_MenuClerk_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new Disk();
+            int index = 0;
+            try
+            {
+                index = int.Parse(((Button)e.Source).Uid);
+            }
+            catch (Exception)
+            {
+                //index = int.Parse(((PackIcon)e.Source).Uid);
+            }
+
+            switch (index)
+            {
+                case 0:
+                    Application.Current.Resources["isMenuCus"] = Visibility.Collapsed;
+                    Application.Current.Resources["isMenuClerk"] = Visibility.Visible;
+                    Application.Current.Resources["isMenuDisk"] = Visibility.Collapsed;
+                    break;
+            }
         }
 
-        private void Employee_Click(object sender, RoutedEventArgs e)
+        private void Btn_MenuDisk_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new ClerkView();
+            int index = 0;
+            try
+            {
+                index = int.Parse(((Button)e.Source).Uid);
+            }
+            catch (Exception)
+            {
+                //index = int.Parse(((PackIcon)e.Source).Uid);
+            }
+
+            switch (index)
+            {
+                case 0:
+                    Application.Current.Resources["isMenuCus"] = Visibility.Collapsed;
+                    Application.Current.Resources["isMenuClerk"] = Visibility.Collapsed;
+                    Application.Current.Resources["isMenuDisk"] = Visibility.Visible;
+                    break;
+
+            }
         }
 
-        private void Title_Click(object sender, RoutedEventArgs e)
+        private void Btn_Disk_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new TitleView();
+            this.DataContext = new Disk();
         }
 
-        private void Report_Click(object sender, RoutedEventArgs e)
+        private void Btn_Rent_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new ReportView();
+            this.DataContext = new RentView();
+        }
+
+        private void Btn_Return_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new ReturnView();
+        }
+
+        private void Btn_Customer_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new Customer();
+
+        }
+
+        private void Btn_Clerk_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new ClerkView();
+        }
+
+        private void Btn_Report_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new ReportView();
+        }
+
+        private void Btn_Title_Click(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new TitleView();
         }
     }
 }

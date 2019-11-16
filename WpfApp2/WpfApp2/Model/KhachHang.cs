@@ -25,6 +25,7 @@ namespace WpfApp2.Model
         public string soCMND { get; set; }
         public string diaChi { get; set; }
         public string soDienThoai { get; set; }
+        public Nullable<bool> trangThaiXoa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuThue> PhieuThue { get; set; }

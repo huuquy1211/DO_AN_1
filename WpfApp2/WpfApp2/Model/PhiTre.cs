@@ -16,7 +16,8 @@ namespace WpfApp2.Model
     {
         public int maPhiTre { get; set; }
         public int maPhieuTra { get; set; }
-        public Nullable<double> phiTre1 { get; set; }
+        public Nullable<double> tongTien { get; set; }
+        public Nullable<bool> tinhTrangThanhToan { get; set; }
     
         public virtual PhieuTra PhieuTra { get; set; }
     }

@@ -28,11 +28,11 @@ namespace WpfApp2.Model
         public virtual DbSet<ChiTietPhieuThue> ChiTietPhieuThue { get; set; }
         public virtual DbSet<Dia> Dia { get; set; }
         public virtual DbSet<KhachHang> KhachHang { get; set; }
-        public virtual DbSet<NhanVien> NhanVien { get; set; }
         public virtual DbSet<PhieuThue> PhieuThue { get; set; }
         public virtual DbSet<PhieuTra> PhieuTra { get; set; }
         public virtual DbSet<PhiTre> PhiTre { get; set; }
-        public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
         public virtual DbSet<TuaDe> TuaDe { get; set; }
+        public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
+        public virtual DbSet<NhanVien> NhanVien { get; set; }
     }
 }

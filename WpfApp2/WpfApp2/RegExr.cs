@@ -11,32 +11,41 @@ namespace WpfApp2
     {
         public bool SoDienThoai(string s)
         {
-            return Regex.IsMatch(s, @"(0[1|2|3|4|5|6|7|8|9])+([0-9]{8,9})\b");
+            return Regex.IsMatch(s, @"(09|01[2|6|8|9])+([0-9]{8})\b");
         }
 
         public bool DiaChi(string s)
         {
             return Regex.IsMatch(s, @"^[-a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
             "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
-            "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s0-9_.,/]+$");
+            "ụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\\s0-9_.,/]+$");
         }
 
         public bool HoTen(string s)
         {
             return Regex.IsMatch(s, @"^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
             "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
-            "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$");
+            "ụủứừỬỮỰỲỴÝỶỸửữựỳýỵỷỹ\\s]+$");
         }
 
         public bool SoCMND(string s)
         {
-            return Regex.IsMatch(s, @"^[0-9]+$");
+            return Regex.IsMatch(s, @"^[0-9]{9,12}$");
         }
 
-        //public bool MaKhachHang(string s)
-        //{
-        //    return Regex.IsMatch(s, @"^[a-zA-Z0-9]+$");
-        //}
+        public bool SoCMNDKH(string s)
+        {
+            return Regex.IsMatch(s, @"(^[0-9]{10})\b");
+        }
+        public bool Type(string s)
+        {
+            return Regex.IsMatch(s, @"(Phim)|(Nhạc)\b");
+        }
+
+        public bool MaKhachHang(string s)
+        {
+            return Regex.IsMatch(s, @"^[0-9]+$");
+        }
 
         //public bool Email(string s)
         //{

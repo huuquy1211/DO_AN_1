@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp2.ViewModel
 {
-    public class KhachHang
+    public class KhachHangVM
     {
         public int MaKhachHang { get; set; }
         public string HoTen { get; set; }

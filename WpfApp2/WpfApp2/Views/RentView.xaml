@@ -19,6 +19,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <GroupBox
+                IsEnabled="True"
                     x:Name="grbKH"
                     Background="AliceBlue"
                   Header="Thông Tin Khách Hàng"
@@ -34,9 +35,10 @@
                       MinWidth="72"
                       Margin="0 0 0 0"
                       VerticalAlignment="Bottom"
+                        SelectionChanged="CbbKH_SelectionChanged"
                       ItemsSource="{Binding ListCus}"
-                      SelectedValue="Id"
-                        DisplayMemberPath="FullName" 
+                      SelectedValue="maKhachHang"
+                        DisplayMemberPath="hoTen"
                         >
 
                         <ComboBox.ItemContainerStyle>
@@ -49,8 +51,8 @@
                                                     <ColumnDefinition/>
                                                     <ColumnDefinition/>
                                                 </Grid.ColumnDefinitions>
-                                                <TextBlock Margin="5" Grid.Column="0" Text="{Binding FullName}"/>
-                                                <TextBlock Margin="5" Grid.Column="1" Text="{Binding Phone}"/>
+                                                <TextBlock Margin="5" Grid.Column="0" Text="{Binding maKhachHang}"/>
+                                                <!--<TextBlock Margin="5" Grid.Column="1" Text="{Binding SoDienThoai}"/>-->
                                             </Grid>
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="ComboBoxItem.IsSelected" Value="True">
@@ -61,6 +63,7 @@
                                                     <Setter TargetName="gd"  Property="Background" Value="Green"></Setter>
                                                     <Setter TargetName="gd"  Property="TextElement.Foreground" Value="White"></Setter>
                                                 </Trigger>
+
 
                                                 <!--IsHighlighted and IsMouseOver is showing same effect but IsHighlighted is used for showing logical focus( for understanding check using tab key)-->
 
@@ -94,22 +97,24 @@
                     <TextBox
                         Margin="0 15"
                         IsReadOnly="True"
-                        Text="{Binding ElementName=cbbKH, Path=SelectedItem.Phone}"
+                        Text="{Binding ElementName=cbbKH, Path=SelectedItem.soDienThoai}"
                         materialDesign:HintAssist.Hint="Số điện thoại"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          x:Name="PhoneTextBox"
+                          x:Name="txtSdt"
                           materialDesign:TransitionAssist.DisableTransitions="True"  />
                     <TextBox
                         IsReadOnly="True"
-                        Text="{Binding ElementName=cbbKH, Path=SelectedItem.Address}"
-                      x:Name="CommentTextBox"
+                        Text="{Binding ElementName=cbbKH, Path=SelectedItem.diaChi}"
+                      x:Name="txtDiaChi"
                       materialDesign:HintAssist.Hint="Địa chỉ"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 </StackPanel>
             </GroupBox>
+
             <Button
-                
+                IsEnabled="False"
                 x:Name="btnLapPhieuThue"
+                Click="BtnLapPhieuThue_Click"
                 VerticalAlignment="Bottom"
                 Margin="50,0,50,20"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
@@ -125,6 +130,8 @@
                     HorizontalScrollBarVisibility="Visible"
                     HorizontalGridLinesBrush="Aquamarine"
                     x:Name="DgvPhieuTre"
+                IsEnabled="False"
+                SelectionChanged="DgvPhieuTre_SelectionChanged"
                       CanUserSortColumns="True"
                       CanUserAddRows="True"
                       VerticalScrollBarVisibility="Visible"
@@ -135,28 +142,21 @@
                 <DataGrid.Columns>
                     <materialDesign:MaterialDataGridTextColumn
                           IsReadOnly="True"
-                          Binding="{Binding TitleName}"
+                          Binding="{Binding tenTuaDe}"
                           Header="Tựa Đề"
-                          Width="120"
+                          Width="150"
                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                     <materialDesign:MaterialDataGridTextColumn
                           IsReadOnly="True"
-                          Binding="{Binding Fee}"
+                          Binding="{Binding phiTre}"
                           Header="Phí Trễ"
                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                    <!-- set a max length to get an indicator in the editor -->
                     <materialDesign:MaterialDataGridTextColumn
                           IsReadOnly="True"
-                          Binding="{Binding DateLate}"
+                          Binding="{Binding ngayTre}"
                           Header="Ngày Trễ"
+                        
                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                    <DataGridTemplateColumn Header="Thanh Toán" x:Name="isSelected">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
             <Button
@@ -166,6 +166,8 @@
                 Margin="50,20,50,20"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 Foreground="Black"
+                IsEnabled="False"
+                Click="BtnThanhToanPhiTre_Click"
                 ToolTip="Thanh Toán Phí Trễ" Content="Thanh Toán Phí Trễ" RenderTransformOrigin="0.52,-0.294"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="0">
@@ -178,31 +180,57 @@
                   Margin="5,1,5,30"
                   materialDesign:ColorZoneAssist.Mode="PrimaryDark" Height="205">
                 <StackPanel>
-                    <ComboBox
-                        materialDesign:HintAssist.Hint="Mã Đĩa"
+                    <!--<ComboBox
+                        materialDesign:HintAssist.Hint="Tên Tựa Đề"
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                        x:Name="cbbCD"
+                        x:Name="cbbTuaDe"
                         IsEditable="True"
                           MinWidth="72"
                           Margin="0 0 0 0"
                           VerticalAlignment="Bottom"
                           ItemsSource="{Binding ListCD}"
-                          SelectedValue="Id"
-                        DisplayMemberPath="Id" 
+                          SelectedValue="tenTuaDe"
+                        DisplayMemberPath="tenTuaDe" 
+                        />
+                    <ComboBox
+                        materialDesign:HintAssist.Hint="Mã Đĩa"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        x:Name="cbbCD"
+                        IsEditable="True"
+                        SelectionChanged="CbbCD_SelectionChanged"
+                          MinWidth="72"
+                          Margin="0 0 0 0"
+                          VerticalAlignment="Bottom"
+                          ItemsSource="{Binding ListCD}"
+                          SelectedValue="maDia"
+                        DisplayMemberPath="maDia" 
+                        />-->
+                    <ComboBox
+                        materialDesign:HintAssist.Hint="Mã Đĩa"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        x:Name="cbbCD"
+                        IsEditable="True"
+                        SelectionChanged="CbbCD_SelectionChanged"
+                          MinWidth="72"
+                          Margin="0 0 0 0"
+                          VerticalAlignment="Bottom"
+                          ItemsSource="{Binding ListCD}"
+                          SelectedValue="maDia"
+                        DisplayMemberPath="maDia" 
                         />
                     <TextBox
                         Margin="0 15"
                         IsReadOnly="True"
-                        Text="{Binding ElementName=cbbCD, Path=SelectedItem.TitleName}"
+                        Text="{Binding ElementName=cbbCD, Path=SelectedItem.tenTuaDe}"
                         materialDesign:HintAssist.Hint="Tên tựa đề"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          x:Name="txtTitle"
+                          x:Name="txtTuaDe"
                           materialDesign:TransitionAssist.DisableTransitions="True"  />
                     <TextBox
                         IsReadOnly="True"
-                        Text="{Binding ElementName=cbbCD, Path=SelectedItem.TypeTitle}"
-                          x:Name="txtTypeTitle"
-                          materialDesign:HintAssist.Hint="Loại Tựa đề"
+                        Text="{Binding ElementName=cbbCD, Path=SelectedItem.loai}"
+                          x:Name="txtLoaiDia"
+                          materialDesign:HintAssist.Hint="Loại"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 </StackPanel>
 
@@ -211,18 +239,23 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button 
-                        x:Name="btnXoaCd"
-                         IsEnabled="False"
-                        Width="150"
+                <Button
+                       
+                        x:Name="btnThemPhieuThue"
+                        
+                    Click="BtnThemPhieuThue_Click"
+                    IsEnabled="False"
+                        Grid.Column="0"
+                         Width="150"
                         Style="{StaticResource MaterialDesignRaisedAccentButton}"
                         Foreground="Black"
-                        ToolTip="Xóa đĩa"
-                        Grid.Column="1" Content="Xóa đĩa" Background="OrangeRed" BorderBrush="#FF0074FF" />
+                        ToolTip="Thêm đĩa"
+                        Content="Thêm đĩa" Background="#FF0074FF" BorderBrush="#FF0074FF"  RenderTransformOrigin="4.576,-5.007"
+                      />
+
                 <Button
-                          Grid.Column="2"
+                       Grid.Column="2"
                             
                             x:Name="btnHuyPhieuThue"
                          IsEnabled="False"
@@ -231,28 +264,23 @@
                             Background="Red"
                             BorderBrush="Red"
                             Foreground="Black"
-                            ToolTip="Hủy phiếu thuê" Content="Hủy phiếu thuê"/>
-                <Button
-                        IsEnabled="False"
-                        Grid.Column="0"
-                        x:Name="btnThemCD"
-                         Width="150"
-                        Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                        Foreground="Black"
-                        ToolTip="Thêm đĩa"
-                        Content="Thêm đĩa" Background="#FF0074FF" BorderBrush="#FF0074FF"  RenderTransformOrigin="4.576,-5.007"/>
+                            ToolTip="Hủy phiếu thuê" Content="Hủy phiếu thuê"
+                    Click="BtnHuyPhieuThue_Click"
+                           />
             </Grid>
 
         </StackPanel>
         <StackPanel  Grid.Column="1"  Grid.Row="1" Margin="0 0 0 50">
 
             <DataGrid
+                
                      BorderThickness="1"
                     Margin="5 0"
                     CanUserDeleteRows="True"
                     HorizontalScrollBarVisibility="Visible"
                     HorizontalGridLinesBrush="Aquamarine"
                     x:Name="DataGridPThue"
+                SelectionChanged="DataGridPThue_SelectionChanged"
                       CanUserSortColumns="True"
                       CanUserAddRows="True"
                       VerticalScrollBarVisibility="Visible"
@@ -264,7 +292,7 @@
                     <materialDesign:MaterialDataGridTextColumn
                             IsReadOnly="True"
                             Width="200"
-                         Binding="{Binding TitleName}"
+                         Binding="{Binding tenTuaDe}"
                           Header="Tựa Đề"
                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
                         <materialDesign:MaterialDataGridTextColumn.HeaderStyle>
@@ -301,7 +329,7 @@
                     <!-- set a max length to get an indicator in the editor -->
                     <materialDesign:MaterialDataGridTextColumn
                             IsReadOnly="True" 
-                            Binding="{Binding TypeTitle}"
+                            Binding="{Binding loai}"
                               Header="Loại Đĩa"
                               MaxLength="255"
                              Width="200"
@@ -310,11 +338,25 @@
                           IsReadOnly="True"
                             Width="100"
                             MaxWidth="400"
-                          Binding="{Binding Price}"
+                          Binding="{Binding donGia}"
                           Header="Đơn Giá"
                           EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
                 </DataGrid.Columns>
             </DataGrid>
+            <Button
+                 x:Name="btnXoaCd"
+                         IsEnabled="False"
+                        Width="150"
+                        Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                        Foreground="Black"
+                        ToolTip="Xóa đĩa"
+                        Grid.Column="1" Content="Xóa đĩa" Background="OrangeRed" BorderBrush="#FF0074FF"
+            Click="BtnXoaCd_Click"
+          
+                VerticalAlignment="Bottom"
+                Margin="50,20,50,20"
+               RenderTransformOrigin="0.52,-0.294"/>
+
         </StackPanel>
         <WrapPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom">
             <TextBlock  Text="Tổng tiền thanh toán:" Foreground="red" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="15" FontSize="20" />
@@ -331,15 +373,15 @@
                       materialDesign:HintAssist.Hint="TotalPrice"/>
         </WrapPanel>
         <Button
-                
-                
                 x:Name="btnSave"
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            Click="BtnSave_Click"
                 ToolTip="Lưu Phiếu Thuê"
                 VerticalAlignment="Bottom"
                 Grid.Column="1"
                 Grid.Row="1"
                 Width="130"
+            IsEnabled="False"
                 Background="Green"
                 Foreground="Black"
                 BorderBrush="Green"

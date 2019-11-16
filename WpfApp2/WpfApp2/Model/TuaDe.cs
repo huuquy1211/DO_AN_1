@@ -26,6 +26,7 @@ namespace WpfApp2.Model
         public Nullable<double> donGia { get; set; }
         public string moTa { get; set; }
         public Nullable<bool> trangThai { get; set; }
+        public Nullable<int> ngayChoThue { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Dia> Dia { get; set; }

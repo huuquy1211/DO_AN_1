@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace WpfApp2.ViewModel
 {
-    class TuaDe
+    public class DiaVM
     {
-        public int maTuaDe { get; set; }
+        public int maDia { get; set; }
         public string tenTuaDe { get; set; }
-        public int soLuong { get; set; }
-        public float donGia { get; set; }
-        public string moTa { get; set; }
+        public string loai { get; set; }
         public bool trangThai { get; set; }
     }
 }

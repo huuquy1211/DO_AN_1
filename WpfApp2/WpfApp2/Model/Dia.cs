@@ -23,7 +23,7 @@ namespace WpfApp2.Model
         public int maDia { get; set; }
         public Nullable<int> maTuaDe { get; set; }
         public string loai { get; set; }
-        public Nullable<bool> trangThai { get; set; }
+        public Nullable<int> trangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietPhieuThue> ChiTietPhieuThue { get; set; }
