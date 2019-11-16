@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4bcdb50b125b41d489f4ca0f45d9724a" Name="Diagram1">
+        <EntityTypeShape EntityType="QLDiaModel.ChiTietPhieuThue" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDiaModel.Dia" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDiaModel.KhachHang" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDiaModel.NhanVien" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDiaModel.PhieuThue" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDiaModel.PhieuTra" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDiaModel.PhiTre" PointX="9.75" PointY="1.5" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDiaModel.TaiKhoan" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDiaModel.TuaDe" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="QLDiaModel.FK__ChiTietPh__maDia__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDiaModel.FK__ChiTietPh__maPhi__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDiaModel.FK_PhieuTra_ChiTietPhieuThue" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDiaModel.FK__Dia__maTuaDe__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDiaModel.FK__PhieuThue__maKha__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDiaModel.FK__NhanVien__maTaiK__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="QLDiaModel.FK_PhiTre_PhieuTra" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

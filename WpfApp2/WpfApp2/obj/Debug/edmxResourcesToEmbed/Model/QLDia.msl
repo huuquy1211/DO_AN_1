@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLDiaModelStoreContainer" CdmEntityContainer="QLDiaEntities">
+    <EntitySetMapping Name="ChiTietPhieuThue">
+      <EntityTypeMapping TypeName="QLDiaModel.ChiTietPhieuThue">
+        <MappingFragment StoreEntitySet="ChiTietPhieuThue">
+          <ScalarProperty Name="maCTPhieuThue" ColumnName="maCTPhieuThue" />
+          <ScalarProperty Name="maDia" ColumnName="maDia" />
+          <ScalarProperty Name="maPhieuThue" ColumnName="maPhieuThue" />
+          <ScalarProperty Name="hanTra" ColumnName="hanTra" />
+          <ScalarProperty Name="trangThaiTra" ColumnName="trangThaiTra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dia">
+      <EntityTypeMapping TypeName="QLDiaModel.Dia">
+        <MappingFragment StoreEntitySet="Dia">
+          <ScalarProperty Name="maDia" ColumnName="maDia" />
+          <ScalarProperty Name="maTuaDe" ColumnName="maTuaDe" />
+          <ScalarProperty Name="loai" ColumnName="loai" />
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhachHang">
+      <EntityTypeMapping TypeName="QLDiaModel.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="maKhachHang" ColumnName="maKhachHang" />
+          <ScalarProperty Name="hoTen" ColumnName="hoTen" />
+          <ScalarProperty Name="soCMND" ColumnName="soCMND" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="soDienThoai" ColumnName="soDienThoai" />
+          <ScalarProperty Name="trangThaiXoa" ColumnName="trangThaiXoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuThue">
+      <EntityTypeMapping TypeName="QLDiaModel.PhieuThue">
+        <MappingFragment StoreEntitySet="PhieuThue">
+          <ScalarProperty Name="maPhieuThue" ColumnName="maPhieuThue" />
+          <ScalarProperty Name="maKhachHang" ColumnName="maKhachHang" />
+          <ScalarProperty Name="tienCoc" ColumnName="tienCoc" />
+          <ScalarProperty Name="ngayThue" ColumnName="ngayThue" />
+          <ScalarProperty Name="trangThaiTraPhiTre" ColumnName="trangThaiTraPhiTre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuTra">
+      <EntityTypeMapping TypeName="QLDiaModel.PhieuTra">
+        <MappingFragment StoreEntitySet="PhieuTra">
+          <ScalarProperty Name="maPhieuTra" ColumnName="maPhieuTra" />
+          <ScalarProperty Name="ngayTra" ColumnName="ngayTra" />
+          <ScalarProperty Name="maCTPhieuThue" ColumnName="maCTPhieuThue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhiTre">
+      <EntityTypeMapping TypeName="QLDiaModel.PhiTre">
+        <MappingFragment StoreEntitySet="PhiTre">
+          <ScalarProperty Name="maPhiTre" ColumnName="maPhiTre" />
+          <ScalarProperty Name="maPhieuTra" ColumnName="maPhieuTra" />
+          <ScalarProperty Name="tongTien" ColumnName="tongTien" />
+          <ScalarProperty Name="tinhTrangThanhToan" ColumnName="tinhTrangThanhToan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TuaDe">
+      <EntityTypeMapping TypeName="QLDiaModel.TuaDe">
+        <MappingFragment StoreEntitySet="TuaDe">
+          <ScalarProperty Name="maTuaDe" ColumnName="maTuaDe" />
+          <ScalarProperty Name="tenTuaDe" ColumnName="tenTuaDe" />
+          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+          <ScalarProperty Name="donGia" ColumnName="donGia" />
+          <ScalarProperty Name="moTa" ColumnName="moTa" />
+          <ScalarProperty Name="trangThai" ColumnName="trangThai" />
+          <ScalarProperty Name="ngayChoThue" ColumnName="ngayChoThue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaiKhoan">
+      <EntityTypeMapping TypeName="QLDiaModel.TaiKhoan">
+        <MappingFragment StoreEntitySet="TaiKhoan">
+          <ScalarProperty Name="quyenTruyCap" ColumnName="quyenTruyCap" />
+          <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+          <ScalarProperty Name="tenDangNhap" ColumnName="tenDangNhap" />
+          <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanVien">
+      <EntityTypeMapping TypeName="QLDiaModel.NhanVien">
+        <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="soDienThoai" ColumnName="soDienThoai" />
+          <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="hoTen" ColumnName="hoTen" />
+          <ScalarProperty Name="maTaiKhoan" ColumnName="maTaiKhoan" />
+          <ScalarProperty Name="maNhanVien" ColumnName="maNhanVien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

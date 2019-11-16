@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLDiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChiTietPhieuThue">
+    <Key>
+      <PropertyRef Name="maCTPhieuThue" />
+    </Key>
+    <Property Name="maCTPhieuThue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="maDia" Type="Int32" Nullable="false" />
+    <Property Name="maPhieuThue" Type="Int32" Nullable="false" />
+    <Property Name="hanTra" Type="DateTime" Precision="0" />
+    <Property Name="trangThaiTra" Type="Boolean" />
+    <NavigationProperty Name="Dia" Relationship="Self.FK__ChiTietPh__maDia__2D27B809" FromRole="ChiTietPhieuThue" ToRole="Dia" />
+    <NavigationProperty Name="PhieuThue" Relationship="Self.FK__ChiTietPh__maPhi__2E1BDC42" FromRole="ChiTietPhieuThue" ToRole="PhieuThue" />
+    <NavigationProperty Name="PhieuTra" Relationship="Self.FK_PhieuTra_ChiTietPhieuThue" FromRole="ChiTietPhieuThue" ToRole="PhieuTra" />
+  </EntityType>
+  <EntityType Name="Dia">
+    <Key>
+      <PropertyRef Name="maDia" />
+    </Key>
+    <Property Name="maDia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="maTuaDe" Type="Int32" />
+    <Property Name="loai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="trangThai" Type="Int32" />
+    <NavigationProperty Name="ChiTietPhieuThue" Relationship="Self.FK__ChiTietPh__maDia__2D27B809" FromRole="Dia" ToRole="ChiTietPhieuThue" />
+    <NavigationProperty Name="TuaDe" Relationship="Self.FK__Dia__maTuaDe__25869641" FromRole="Dia" ToRole="TuaDe" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="maKhachHang" />
+    </Key>
+    <Property Name="maKhachHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soCMND" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="diaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soDienThoai" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="trangThaiXoa" Type="Boolean" />
+    <NavigationProperty Name="PhieuThue" Relationship="Self.FK__PhieuThue__maKha__2F10007B" FromRole="KhachHang" ToRole="PhieuThue" />
+  </EntityType>
+  <EntityType Name="PhieuThue">
+    <Key>
+      <PropertyRef Name="maPhieuThue" />
+    </Key>
+    <Property Name="maPhieuThue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="maKhachHang" Type="Int32" Nullable="false" />
+    <Property Name="tienCoc" Type="Double" />
+    <Property Name="ngayThue" Type="DateTime" Precision="0" />
+    <Property Name="trangThaiTraPhiTre" Type="Boolean" />
+    <NavigationProperty Name="ChiTietPhieuThue" Relationship="Self.FK__ChiTietPh__maPhi__2E1BDC42" FromRole="PhieuThue" ToRole="ChiTietPhieuThue" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK__PhieuThue__maKha__2F10007B" FromRole="PhieuThue" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="PhieuTra">
+    <Key>
+      <PropertyRef Name="maPhieuTra" />
+    </Key>
+    <Property Name="maPhieuTra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ngayTra" Type="DateTime" Precision="0" />
+    <Property Name="maCTPhieuThue" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChiTietPhieuThue" Relationship="Self.FK_PhieuTra_ChiTietPhieuThue" FromRole="PhieuTra" ToRole="ChiTietPhieuThue" />
+    <NavigationProperty Name="PhiTre" Relationship="Self.FK_PhiTre_PhieuTra" FromRole="PhieuTra" ToRole="PhiTre" />
+  </EntityType>
+  <EntityType Name="PhiTre">
+    <Key>
+      <PropertyRef Name="maPhiTre" />
+    </Key>
+    <Property Name="maPhiTre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="maPhieuTra" Type="Int32" Nullable="false" />
+    <Property Name="tongTien" Type="Double" />
+    <Property Name="tinhTrangThanhToan" Type="Boolean" />
+    <NavigationProperty Name="PhieuTra" Relationship="Self.FK_PhiTre_PhieuTra" FromRole="PhiTre" ToRole="PhieuTra" />
+  </EntityType>
+  <EntityType Name="TuaDe">
+    <Key>
+      <PropertyRef Name="maTuaDe" />
+    </Key>
+    <Property Name="maTuaDe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenTuaDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soLuong" Type="Int32" />
+    <Property Name="donGia" Type="Double" />
+    <Property Name="moTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="trangThai" Type="Boolean" />
+    <Property Name="ngayChoThue" Type="Int32" />
+    <NavigationProperty Name="Dia" Relationship="Self.FK__Dia__maTuaDe__25869641" FromRole="TuaDe" ToRole="Dia" />
+  </EntityType>
+  <Association Name="FK__ChiTietPh__maDia__2D27B809">
+    <End Role="Dia" Type="Self.Dia" Multiplicity="1" />
+    <End Role="ChiTietPhieuThue" Type="Self.ChiTietPhieuThue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dia">
+        <PropertyRef Name="maDia" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuThue">
+        <PropertyRef Name="maDia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietPh__maPhi__2E1BDC42">
+    <End Role="PhieuThue" Type="Self.PhieuThue" Multiplicity="1" />
+    <End Role="ChiTietPhieuThue" Type="Self.ChiTietPhieuThue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuThue">
+        <PropertyRef Name="maPhieuThue" />
+      </Principal>
+      <Dependent Role="ChiTietPhieuThue">
+        <PropertyRef Name="maPhieuThue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuTra_ChiTietPhieuThue">
+    <End Role="ChiTietPhieuThue" Type="Self.ChiTietPhieuThue" Multiplicity="1" />
+    <End Role="PhieuTra" Type="Self.PhieuTra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChiTietPhieuThue">
+        <PropertyRef Name="maCTPhieuThue" />
+      </Principal>
+      <Dependent Role="PhieuTra">
+        <PropertyRef Name="maCTPhieuThue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Dia__maTuaDe__25869641">
+    <End Role="TuaDe" Type="Self.TuaDe" Multiplicity="0..1" />
+    <End Role="Dia" Type="Self.Dia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TuaDe">
+        <PropertyRef Name="maTuaDe" />
+      </Principal>
+      <Dependent Role="Dia">
+        <PropertyRef Name="maTuaDe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuThue__maKha__2F10007B">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+    <End Role="PhieuThue" Type="Self.PhieuThue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="maKhachHang" />
+      </Principal>
+      <Dependent Role="PhieuThue">
+        <PropertyRef Name="maKhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhiTre_PhieuTra">
+    <End Role="PhieuTra" Type="Self.PhieuTra" Multiplicity="1" />
+    <End Role="PhiTre" Type="Self.PhiTre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuTra">
+        <PropertyRef Name="maPhieuTra" />
+      </Principal>
+      <Dependent Role="PhiTre">
+        <PropertyRef Name="maPhieuTra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLDiaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiTietPhieuThue" EntityType="Self.ChiTietPhieuThue" />
+    <EntitySet Name="Dia" EntityType="Self.Dia" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" />
+    <EntitySet Name="PhieuThue" EntityType="Self.PhieuThue" />
+    <EntitySet Name="PhieuTra" EntityType="Self.PhieuTra" />
+    <EntitySet Name="PhiTre" EntityType="Self.PhiTre" />
+    <EntitySet Name="TuaDe" EntityType="Self.TuaDe" />
+    <AssociationSet Name="FK__ChiTietPh__maDia__2D27B809" Association="Self.FK__ChiTietPh__maDia__2D27B809">
+      <End Role="Dia" EntitySet="Dia" />
+      <End Role="ChiTietPhieuThue" EntitySet="ChiTietPhieuThue" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietPh__maPhi__2E1BDC42" Association="Self.FK__ChiTietPh__maPhi__2E1BDC42">
+      <End Role="PhieuThue" EntitySet="PhieuThue" />
+      <End Role="ChiTietPhieuThue" EntitySet="ChiTietPhieuThue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuTra_ChiTietPhieuThue" Association="Self.FK_PhieuTra_ChiTietPhieuThue">
+      <End Role="ChiTietPhieuThue" EntitySet="ChiTietPhieuThue" />
+      <End Role="PhieuTra" EntitySet="PhieuTra" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Dia__maTuaDe__25869641" Association="Self.FK__Dia__maTuaDe__25869641">
+      <End Role="TuaDe" EntitySet="TuaDe" />
+      <End Role="Dia" EntitySet="Dia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuThue__maKha__2F10007B" Association="Self.FK__PhieuThue__maKha__2F10007B">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="PhieuThue" EntitySet="PhieuThue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhiTre_PhieuTra" Association="Self.FK_PhiTre_PhieuTra">
+      <End Role="PhieuTra" EntitySet="PhieuTra" />
+      <End Role="PhiTre" EntitySet="PhiTre" />
+    </AssociationSet>
+    <EntitySet Name="TaiKhoan" EntityType="QLDiaModel.TaiKhoan" />
+    <EntitySet Name="NhanVien" EntityType="QLDiaModel.NhanVien" />
+    <AssociationSet Name="FK_NhanVien_TaiKhoan" Association="QLDiaModel.FK_NhanVien_TaiKhoan">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="maTaiKhoan" />
+    </Key>
+    <Property Name="maTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenDangNhap" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="matKhau" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="quyenTruyCap" Type="Boolean" />
+    <NavigationProperty Name="NhanVien" Relationship="QLDiaModel.FK_NhanVien_TaiKhoan" FromRole="TaiKhoan" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="maNhanVien" />
+    </Key>
+    <Property Name="maNhanVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="maTaiKhoan" Type="Int32" Nullable="false" />
+    <Property Name="hoTen" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="diaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soDienThoai" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TaiKhoan" Relationship="QLDiaModel.FK_NhanVien_TaiKhoan" FromRole="NhanVien" ToRole="TaiKhoan" />
+  </EntityType>
+  <Association Name="FK_NhanVien_TaiKhoan">
+    <End Type="QLDiaModel.TaiKhoan" Role="TaiKhoan" Multiplicity="1" />
+    <End Type="QLDiaModel.NhanVien" Role="NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="maTaiKhoan" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="maTaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
