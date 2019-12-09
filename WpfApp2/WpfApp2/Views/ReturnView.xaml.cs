@@ -30,7 +30,7 @@ namespace WpfApp2.Views
         public List<PhieuTraVM> ListReturn { get; set; }
 
         public List<DiaTraVM> ListCDHasRent { get; set; }
-
+        public int soDiaThue = 0;
         public ReturnView()
         {
             InitialCDHasRent();
@@ -95,7 +95,7 @@ namespace WpfApp2.Views
                     returnDiskVM.ngayThue = (DateTime)_db.PhieuThue.FirstOrDefault(x => x.ChiTietPhieuThue.Any(s => s.maDia == diskid && s.Dia.trangThai == 1 && s.trangThaiTra == false)).ngayThue;
                     returnDiskVM.KhachHang = _db.PhieuThue.FirstOrDefault(x => x.ChiTietPhieuThue.Any(s => s.maDia == diskid && s.Dia.trangThai == 1 && s.trangThaiTra == false)).KhachHang;
                     returnDiskVM.isLate = _db.ChiTietPhieuThue.Any(x => x.maDia == diskid && x.Dia.trangThai == 1 && x.trangThaiTra == false && x.hanTra < DateTime.Now);
-                    //returnDiskVM.soNgayThue = ((DateTime)_db.ChiTietPhieuThue.FirstOrDefault(y => y.maDia == diskid).hanTra).DayOfYear - ((DateTime)_db.ChiTietPhieuThue.FirstOrDefault(s => s.maDia == diskid).PhieuThue.ngayThue).DayOfYear;
+                 
                     int soNgayThue = (DateTime.Now).DayOfYear - (returnDiskVM.ngayThue).DayOfYear;
                     if (soNgayThue == 0)
                         returnDiskVM.soNgayThue = 1;
@@ -127,56 +127,66 @@ namespace WpfApp2.Views
             {
                 try
                 {
-                    if (int.TryParse(cbbReturn.Text.Trim(), out int idcd))
+                    if (DataGridPhieuTra.Items.Count > 0)
                     {
-
-                        foreach (PhieuTraVM item in DataGridPhieuTra.Items)
+                        if (int.TryParse(cbbReturn.Text.Trim(), out int idcd))
                         {
-                            var diskedit = _db.Dia.FirstOrDefault(x => x.maDia == item.maDia);
-                            diskedit.trangThai = 0;
-                            var editTrangThaiTra = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.trangThaiTra == false);
-                            editTrangThaiTra.trangThaiTra = true;
-                            _db.Entry(diskedit).State = System.Data.Entity.EntityState.Modified;
-
-                            var returnBill = new PhieuTra();
-                            returnBill.ngayTra = DateTime.Now;
-                            returnBill.maCTPhieuThue = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false).maCTPhieuThue;
-                            returnBill.ChiTietPhieuThue = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false);
-                            _db.PhieuTra.Add(returnBill);
-                            //_db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.PhieuThue.maKhachHang == item.KhachHang.maKhachHang && x.Dia.trangThai == true && x.trangThaiTra == false).hanTra
-                            var date = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false).hanTra;
-
-                            if (returnBill.ngayTra > date)
+                            foreach (PhieuTraVM item in DataGridPhieuTra.Items)
                             {
-                                //var editPhieuThue = thongTinCTPhieuThue.PhieuThue.trangThaiTraPhiTre = false;
-                                var dayslate = ((DateTime)returnBill.ngayTra).DayOfYear - ((DateTime)_db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false).hanTra).DayOfYear;
-                                var overdue = new PhiTre();
-                                overdue.PhieuTra = returnBill;
-                                overdue.maPhieuTra = returnBill.maPhieuTra;
-                                overdue.tongTien = dayslate * 2000;
-                                overdue.tinhTrangThanhToan = false;
+                                var diskedit = _db.Dia.FirstOrDefault(x => x.maDia == item.maDia);
+                                diskedit.trangThai = 0;
+                                var editTrangThaiTra = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.trangThaiTra == false);
+                                editTrangThaiTra.trangThaiTra = true;
+                                _db.Entry(diskedit).State = System.Data.Entity.EntityState.Modified;
 
-                                _db.PhiTre.Add(overdue);
-                            }
-                            else
-                            {
-                                var thongTinCTPhieuThue = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false);
-                                thongTinCTPhieuThue.PhieuThue.trangThaiTraPhiTre = true;
+                                var returnBill = new PhieuTra();
+                                returnBill.ngayTra = DateTime.Now;
+                                returnBill.maCTPhieuThue = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false).maCTPhieuThue;
+                                returnBill.ChiTietPhieuThue = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false);
+                                _db.PhieuTra.Add(returnBill);
+                                //_db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.PhieuThue.maKhachHang == item.KhachHang.maKhachHang && x.Dia.trangThai == true && x.trangThaiTra == false).hanTra
+                                var date = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false).hanTra;
+
+                                if (returnBill.ngayTra > date)
+                                {
+                                    double soTienNo = 0;
+                                    if (item.isLate == true)
+                                    {
+                                        var giaTuaDe = (double)_db.TuaDe.FirstOrDefault(x => x.tenTuaDe == item.tenTuaDe).donGia;
+                                        soTienNo = (giaTuaDe / 2);
+                                    }
+                                    //var dayslate = ((DateTime)returnBill.ngayTra).DayOfYear - ((DateTime)_db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false).hanTra).DayOfYear;
+                                    var overdue = new PhiTre();
+                                    overdue.PhieuTra = returnBill;
+
+                                    overdue.maPhieuTra = returnBill.maPhieuTra;
+                                    overdue.tongTien = soTienNo;
+                                    overdue.tinhTrangThanhToan = false;
+
+                                    _db.PhiTre.Add(overdue);
+                                }
+                                else
+                                {
+                                    var thongTinCTPhieuThue = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maDia == item.maDia && x.Dia.trangThai == 1 && x.trangThaiTra == false);
+                                    thongTinCTPhieuThue.PhieuThue.trangThaiTraPhiTre = true;
+                                }
+
                             }
 
+                            _db.SaveChanges();
+                            dbTran.Commit();
+                            MessageBox.Show("Trả thành công", "Thông báo");
+                            cbbReturn.IsEnabled = true;
+                            InitialCDHasRent();
+                            cbbReturn.ItemsSource = ListCDHasRent;
+                            cbbReturn.Text = "";
+                            ListReturn = new List<PhieuTraVM>();
+                            DataGridPhieuTra.Items.Clear();
+                            cbbReturn.Focus();
                         }
-
-                        _db.SaveChanges();
-                        dbTran.Commit();
-                        MessageBox.Show("Trả thành công", "Thông báo");
-                        cbbReturn.IsEnabled = true;
-                        InitialCDHasRent();
-                        cbbReturn.ItemsSource = ListCDHasRent;
-                        cbbReturn.Text = "";
-                        ListReturn = new List<PhieuTraVM>();
-                        DataGridPhieuTra.Items.Clear();
-                        cbbReturn.Focus();
                     }
+                    else MessageBox.Show("Chưa có đĩa để trả!");
+
                 }
                 catch (Exception ex)
                 {

@@ -47,6 +47,7 @@ namespace WpfApp2.Views
         {
             try
             {
+                double TongPhiTre = 0;
                 string tenKHCbb = cbbKH.Text;
                 var cus = _db.KhachHang.FirstOrDefault(x => x.hoTen == tenKHCbb && x.trangThaiXoa == false);
                 var cusPhieuThue = _db.PhieuThue.Where(x => x.maKhachHang == cus.maKhachHang && x.trangThaiTraPhiTre == false).ToList();
@@ -65,6 +66,7 @@ namespace WpfApp2.Views
                         {
                             foreach (ChiTietPhieuThue item in listCTPhieuThue)
                             {
+                                
                                 var returnBill = _db.PhieuTra.FirstOrDefault(x => x.maCTPhieuThue == item.maCTPhieuThue);
 
                                 //List<ChiTietPhieuThue> listCTPhieuThueKH = new List<ChiTietPhieuThue>();
@@ -80,10 +82,10 @@ namespace WpfApp2.Views
                                     {
 
                                         var dayslate = ((DateTime)returnBill.ngayTra).DayOfYear - ((DateTime)_db.ChiTietPhieuThue.FirstOrDefault(x => x.PhieuThue.maKhachHang == DSPhieuThue.maKhachHang && x.trangThaiTra == true).hanTra).DayOfYear;
-
                                         var overdue = new PhiTreVM();
                                         overdue.tenTuaDe = _db.PhieuTra.FirstOrDefault(y => y.maPhieuTra == returnBill.maPhieuTra).ChiTietPhieuThue.Dia.TuaDe.tenTuaDe;
-                                        overdue.phiTre = (double)_db.PhiTre.FirstOrDefault(y => y.tinhTrangThanhToan == false).tongTien;
+                                        //overdue.phiTre = (double)_db.PhiTre.FirstOrDefault(y => y.tinhTrangThanhToan == false).tongTien;
+                                        overdue.phiTre = (double)_db.PhieuTra.FirstOrDefault(y => y.maPhieuTra == returnBill.maPhieuTra).PhiTre.FirstOrDefault(t => t.tinhTrangThanhToan == false).tongTien;
                                         overdue.ngayTre = dayslate;
                                         overdue.maPhiTre = _db.PhiTre.FirstOrDefault(x => x.maPhieuTra == returnBill.maPhieuTra).maPhiTre;
 
@@ -95,7 +97,9 @@ namespace WpfApp2.Views
                                                 return;
                                             }
                                         }
+                                        TongPhiTre += overdue.phiTre;
                                         DgvPhieuTre.Items.Add(overdue);
+
                                     }
                                     else
                                     {
@@ -114,6 +118,7 @@ namespace WpfApp2.Views
                         }
 
                     }
+                    txtTotalPrice.Text = TongPhiTre.ToString("#,###") + " đ";
                 }
                 else
                 {
@@ -131,8 +136,7 @@ namespace WpfApp2.Views
                     return;
                 }
                 else grbCD.IsEnabled = false;
-
-
+               
 
             }
             catch (Exception ex)
@@ -161,13 +165,21 @@ namespace WpfApp2.Views
 
         private void BtnLapPhieuThue_Click(object sender, RoutedEventArgs e)
         {
-
             DgvPhieuTre.Items.Clear();
-            InitialPhiTre();
-            if (DgvPhieuTre.Items.Count > 0)
-                btnThanhToanPhiTre.IsEnabled = true;
+            if (cbbKH.SelectedIndex > -1)
+            {
+                InitialPhiTre();
+                if (DgvPhieuTre.Items.Count > 0)
+                    btnThanhToanPhiTre.IsEnabled = true;
+                else
+                    btnThanhToanPhiTre.IsEnabled = false;
+
+            }
             else
-                btnThanhToanPhiTre.IsEnabled = false;
+            {
+                MessageBox.Show("Chọn khách hàng!");
+            }
+            
         }
 
         private void CbbKH_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -178,11 +190,13 @@ namespace WpfApp2.Views
             btnXoaCd.IsEnabled = false;
             if (cbbKH.SelectedIndex > -1)
             {
-                btnLapPhieuThue.IsEnabled = true;
+                btnHuyPhieuThue.IsEnabled = true;
+               
             }
             else
             {
-                btnLapPhieuThue.IsEnabled = false;
+                btnHuyPhieuThue.IsEnabled = false;
+                txtTotalPrice.Text = "0 đ";
             }
         }
 
@@ -457,13 +471,14 @@ namespace WpfApp2.Views
                 grbCD.IsEnabled = true;
                 MessageBox.Show("Thanh toán thành công!");
                 DgvPhieuTre.Items.Clear();
+                txtTotalPrice.Text =  "0 đ";
                 btnThanhToanPhiTre.IsEnabled = false;
             }
             catch (Exception ex)
             {
                 grbCD.IsEnabled = false;
                 DgvPhieuTre.Items.Clear();
-
+                txtTotalPrice.Text = "0 đ";
             }
 
         }

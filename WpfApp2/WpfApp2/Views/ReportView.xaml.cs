@@ -222,6 +222,18 @@ namespace WpfApp2.Views
         {
             if (dtgTitles.Items.Count > 0)
             {
+                var listPrint = new List<TuaDeVM>();
+                foreach(TuaDeVM item in listTitle)
+                {
+                    TuaDeVM td = new TuaDeVM();
+                    td.maTuaDe = item.maTuaDe;
+                    td.tenTuaDe = ConvertToUnsign(item.tenTuaDe);
+                    td.soLuongDaThue = item.soLuongDaThue;
+                    td.donGia = item.donGia;
+                    listPrint.Add(td);
+                }
+                dtgTitles.Visibility = Visibility.Collapsed;
+                dtgTitles.ItemsSource = listPrint;
 
                 this.dtgTitles.SelectAllCells();
                 this.dtgTitles.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
@@ -237,6 +249,9 @@ namespace WpfApp2.Views
                 }
                 catch (Exception ex)
                 { }
+
+                dtgTitles.ItemsSource = listTitle;
+                dtgTitles.Visibility = Visibility.Visible;
             }
             else
             {
@@ -248,7 +263,21 @@ namespace WpfApp2.Views
         {
             if (dtgdisk.Items.Count > 0)
             {
-
+                var listPrint = new List<DiaQuaHanVM>();
+                foreach(DiaQuaHanVM item in listQH)
+                {
+                    DiaQuaHanVM qh = new DiaQuaHanVM();
+                    qh.maTuaDeQH = item.maTuaDeQH;
+                    qh.loaiTuaDeQH = item.loaiTuaDeQH;
+                    qh.tenKhachHangQH = ConvertToUnsign(item.tenKhachHangQH);
+                    qh.tenTuaDeQH = ConvertToUnsign(item.tenTuaDeQH);
+                    qh.soNgayTre = item.soNgayTre;
+                    qh.soLuongThue = item.soLuongThue;
+                    qh.soLuongThue = item.soLuongThue;
+                    listPrint.Add(qh);
+                }
+                dtgdisk.Visibility = Visibility.Collapsed;
+                dtgdisk.ItemsSource = listPrint;
                 this.dtgdisk.SelectAllCells();
                 this.dtgdisk.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
                 ApplicationCommands.Copy.Execute(null, this.dtgdisk);
@@ -263,6 +292,8 @@ namespace WpfApp2.Views
                 }
                 catch (Exception ex)
                 { }
+                dtgdisk.ItemsSource = listQH;
+                dtgdisk.Visibility = Visibility.Visible;
             }
             else
             {
@@ -274,7 +305,19 @@ namespace WpfApp2.Views
         {
             if (dtgdoanhthu.Items.Count > 0)
             {
-
+                var listPrint =new List<DoanhThuVM>();
+                foreach(DoanhThuVM item in listDT)
+                {
+                    DoanhThuVM dt = new DoanhThuVM();
+                    dt.idDia = item.idDia;
+                    dt.tenTuaDeDT = ConvertToUnsign(item.tenTuaDeDT);
+                    dt.loaiTuaDeDT = ConvertToUnsign(item.loaiTuaDeDT);
+                    dt.giaThue = item.giaThue;
+                    dt.phiTre = item.phiTre;
+                    listPrint.Add(dt);
+                }
+                dtgdoanhthu.Visibility = Visibility.Collapsed;
+                dtgdoanhthu.ItemsSource = listPrint;
                 this.dtgdoanhthu.SelectAllCells();
                 this.dtgdoanhthu.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
                 ApplicationCommands.Copy.Execute(null, this.dtgdoanhthu);
@@ -282,13 +325,15 @@ namespace WpfApp2.Views
                 String result = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
                 try
                 {
-                    StreamWriter sw = new StreamWriter("Doanh thu.csv", false, Encoding.Unicode);
+                    StreamWriter sw = new StreamWriter("Doanh thu.csv", false, Encoding.UTF8);
                     sw.WriteLine(result);
                     sw.Close();
                     Process.Start("Doanh thu.csv");
                 }
                 catch (Exception ex)
                 { }
+                dtgdoanhthu.ItemsSource = listDT;
+                dtgdoanhthu.Visibility = Visibility.Visible;
             }
             else
             {

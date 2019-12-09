@@ -112,7 +112,7 @@
             </GroupBox>
 
             <Button
-                IsEnabled="False"
+                IsEnabled="True"
                 x:Name="btnLapPhieuThue"
                 Click="BtnLapPhieuThue_Click"
                 VerticalAlignment="Bottom"

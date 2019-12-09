@@ -321,6 +321,9 @@ namespace WpfApp2.Views
         private void BtnShowLateBill_Click(object sender, RoutedEventArgs e)
         {
             popupLateBill.IsOpen = true;
+            isAddCus.IsEnabled = false;
+            grvCustomer.IsEnabled = false;
+            btnAddCustomer.IsEnabled = false;
             if (dgvLateBill.Items.Count > 0)
                 btnThanhToan.IsEnabled = true;
             else
@@ -373,6 +376,9 @@ namespace WpfApp2.Views
         {
             popupLateBill.IsOpen = false;
             dgvLateBill.Items.Clear();
+            isAddCus.IsEnabled = true;
+            grvCustomer.IsEnabled = true;
+            btnAddCustomer.IsEnabled = true;
         }
 
         public static string ConvertToUnsign(string s)
@@ -445,35 +451,42 @@ namespace WpfApp2.Views
         private void BtnThanhToan_Click(object sender, RoutedEventArgs e)
         {
             popupLateBill.IsOpen = false;
+           
             try
             {
                 int maKHCbb = Int32.Parse(txtMaKH.Text);
                 var cus = _db.KhachHang.FirstOrDefault(x => x.maKhachHang == maKHCbb && x.trangThaiXoa == false);
-                var cusPhieuThue = _db.PhieuThue.FirstOrDefault(x => x.maKhachHang == cus.maKhachHang && x.trangThaiTraPhiTre == false);
-                //var cusCtPhieuThue = _db.ChiTietPhieuThue.FirstOrDefault(x => x.maPhieuThue == cusPhieuThue.maPhieuThue && x.trangThaiTra == true);
+                var cusPhieuThue = _db.PhieuThue.Where(x => x.maKhachHang == cus.maKhachHang && x.trangThaiTraPhiTre == false).ToList();
 
 
                 List<ChiTietPhieuThue> listCTPhieuThue = new List<ChiTietPhieuThue>();
-                listCTPhieuThue = _db.ChiTietPhieuThue.Where(x => x.trangThaiTra == true && x.maPhieuThue == cusPhieuThue.maPhieuThue).ToList();
-
-                foreach (ChiTietPhieuThue item in listCTPhieuThue)
+                foreach (PhieuThue DSPhieuThue in cusPhieuThue)
                 {
-                    var returnBill = _db.PhieuTra.FirstOrDefault(x => x.maCTPhieuThue == item.maCTPhieuThue);
-                    var editPhiTre = _db.PhiTre.FirstOrDefault(x => x.maPhieuTra == returnBill.maPhieuTra && x.tinhTrangThanhToan == false);
-                    editPhiTre.tinhTrangThanhToan = true;
+                    listCTPhieuThue = _db.ChiTietPhieuThue.Where(x => x.trangThaiTra == true && x.maPhieuThue == DSPhieuThue.maPhieuThue).ToList();
+
+                    foreach (ChiTietPhieuThue item in listCTPhieuThue)
+                    {
+                        var returnBill = _db.PhieuTra.FirstOrDefault(x => x.maCTPhieuThue == item.maCTPhieuThue);
+                        var editPhiTre = _db.PhiTre.FirstOrDefault(x => x.maPhieuTra == returnBill.maPhieuTra && x.tinhTrangThanhToan == false);
+                        editPhiTre.tinhTrangThanhToan = true;
+                        DSPhieuThue.trangThaiTraPhiTre = true;
+                    }
                 }
-                var editphieuThue = _db.PhieuThue.FirstOrDefault(x => x.maKhachHang == cus.maKhachHang && x.trangThaiTraPhiTre == false);
-                editphieuThue.trangThaiTraPhiTre = true;
+
+                //var editphieuThue = _db.PhieuThue.FirstOrDefault(x => x.maKhachHang == cus.maKhachHang && x.trangThaiTraPhiTre == false);
+                //editphieuThue.trangThaiTraPhiTre = true;
 
                 _db.SaveChanges();
-               
+
                 MessageBox.Show("Thanh toán thành công!");
                 dgvLateBill.Items.Clear();
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Không có phí trể!");
                 dgvLateBill.Items.Clear();
+               
             }
         }
     }

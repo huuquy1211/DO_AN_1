@@ -106,10 +106,10 @@
                      ItemsSource="{Binding TitleReports}"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn/>
-                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding tenTuaDe}"/>
-                        <DataGridTextColumn Header="Số lượng đã thuê" Binding="{Binding soLuongDaThue}"/>
-                        <DataGridTextColumn Header="Giá thuê" Binding="{Binding donGia}"/>
-                        <DataGridTextColumn Header="Loại" Binding="{Binding loaiTuaDe}"/>
+                        <DataGridTextColumn Header="Ten tua de" Binding="{Binding tenTuaDe}"/>
+                        <DataGridTextColumn Header="So luong da thue" Binding="{Binding soLuongDaThue}"/>
+                        <DataGridTextColumn Header="Gia thue" Binding="{Binding donGia}"/>
+                        <DataGridTextColumn Header="Loai" Binding="{Binding loaiTuaDe}"/>
 
                     </DataGrid.Columns>
                 </DataGrid>
@@ -174,12 +174,12 @@
                      ItemsSource="{Binding TitleReports}"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn/>
-                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding tenTuaDeQH}"/>
-                        <DataGridTextColumn Header="Loại" Binding="{Binding loaiTuaDeQH}"/>
-                        <DataGridTextColumn Header="Số lượng đã thuê" Binding="{Binding soLuongThue}"/>
-                        <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding tenKhachHangQH}"/>
-                        <DataGridTextColumn Header="Số điện thoại" Binding="{Binding soDienThoai}"/>
-                        <DataGridTextColumn Header="Ngày quá hạn" Binding="{Binding soNgayTre}"/>
+                        <DataGridTextColumn Header="Ten tua de" Binding="{Binding tenTuaDeQH}"/>
+                        <DataGridTextColumn Header="Loai" Binding="{Binding loaiTuaDeQH}"/>
+                        <DataGridTextColumn Header="So luong da thue" Binding="{Binding soLuongThue}"/>
+                        <DataGridTextColumn Header="Ten khach hang" Binding="{Binding tenKhachHangQH}"/>
+                        <DataGridTextColumn Header="Sa dien thoai" Binding="{Binding soDienThoai}"/>
+                        <DataGridTextColumn Header="Ngay qua han" Binding="{Binding soNgayTre}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
@@ -246,12 +246,12 @@
                      ItemsSource="{Binding TitleReports}"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn/>
-                        <DataGridTextColumn Header="Tên tựa đề" Binding="{Binding tenTuaDeDT}"/>
-                        <DataGridTextColumn Header="Loại" Binding="{Binding loaiTuaDeDT}"/>
-                        <DataGridTextColumn Header="Số đĩa đã thuê" Binding="{Binding soLuongThue}"/>
-                        <DataGridTextColumn Header="Giá thuê" Binding="{Binding giaThue}"/>
-                        <DataGridTextColumn Header="Phí trễ" Binding="{Binding phiTre}"/>
-                        <DataGridTextColumn Header="Thành tiền" Binding="{Binding thanhTien}"/>
+                        <DataGridTextColumn Header="Ten tua de" Binding="{Binding tenTuaDeDT}"/>
+                        <DataGridTextColumn Header="Loai" Binding="{Binding loaiTuaDeDT}"/>
+                        <DataGridTextColumn Header="So dia da thue" Binding="{Binding soLuongThue}"/>
+                        <DataGridTextColumn Header="Gia thue" Binding="{Binding giaThue}"/>
+                        <DataGridTextColumn Header="Phi tre" Binding="{Binding phiTre}"/>
+                        <DataGridTextColumn Header="Thanh tien" Binding="{Binding thanhTien}"/>
 
                     </DataGrid.Columns>
                 </DataGrid>
