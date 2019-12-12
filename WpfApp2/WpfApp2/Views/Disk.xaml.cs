@@ -67,7 +67,7 @@ namespace WpfApp2.Views
                     var aa = _db.Dia.Where(x => x.TuaDe.tenTuaDe.ToUpper().Trim() == cbxTenTua.Text.ToUpper().Trim() && x.TuaDe.moTa == txtLoaiTua.Text
                     && x.TuaDe.trangThai == true && (x.trangThai == 0 || x.trangThai == 1)).ToList();
                     var bb = _db.Dia.Where(x => x.TuaDe.tenTuaDe.ToUpper().Trim() == cbxTenTua.Text.ToUpper().Trim() && x.TuaDe.moTa == txtLoaiTua.Text
-                    && x.TuaDe.trangThai == true).Count();
+                    && x.TuaDe.trangThai == true && (x.trangThai ==0 || x.trangThai==1)).Count();
                     var qq = _db.TuaDe.FirstOrDefault(x => x.tenTuaDe == cbxTenTua.Text && x.moTa == txtLoaiTua.Text && x.trangThai == true).soLuong;
                     var ee = countitle.Where(x => x.IdTitle == _db.TuaDe.FirstOrDefault(a => a.tenTuaDe.ToUpper().Trim() == cbxTenTua.Text.Trim().ToUpper() && a.moTa == txtLoaiTua.Text && a.trangThai == true).maTuaDe).Count();
                     if (qq - (ee + bb) > 0)
@@ -86,8 +86,6 @@ namespace WpfApp2.Views
                         MessageBox.Show("Tựa đề đã đủ số lượng đĩa");
                     }
                 }
-
-
                 else
                 {
                     MessageBox.Show("Nhập dữ liệu để thêm");
@@ -219,6 +217,7 @@ namespace WpfApp2.Views
                     TypeTitle = x.TuaDe.moTa
                 }).ToList();
                 grvDisc.ItemsSource = CDs;
+                MessageBox.Show("Nhập thông tin tìm kiếm");
             }
             else if (txtSearch.Text.Contains("CD"))
             {
@@ -297,10 +296,6 @@ namespace WpfApp2.Views
                 }).ToList();
                 grvDisc.ItemsSource = CDs;
             }
-
-
         }
-
-
     }
 }

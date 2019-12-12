@@ -397,56 +397,58 @@ namespace WpfApp2.Views
             sb = sb.Replace('đ', 'd');
             return (sb.ToString().Normalize(NormalizationForm.FormD));
         }
-        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBoxName = (TextBox)sender;
-            string filterText = textBoxName.Text;
-            ICollectionView cv = CollectionViewSource.GetDefaultView(grvCustomer.ItemsSource);
 
 
-            if (re.SoCMND(filterText))
-            {
-                cv.Filter = o =>
-                {
-                    KhachHang kh = o as KhachHang;
-                    return (ConvertToUnsign(kh.maKhachHang.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(kh.soCMND.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(kh.soDienThoai.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
-                };
-            }
-            //Tìm sdt
-            if (re.SoDienThoai(filterText))
-            {
-                cv.Filter = o =>
-                {
-                    KhachHang kh = o as KhachHang;
-                    return (ConvertToUnsign(kh.soDienThoai.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
-                };
-            }
+        //private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    TextBox textBoxName = (TextBox)sender;
+        //    string filterText = textBoxName.Text;
+        //    ICollectionView cv = CollectionViewSource.GetDefaultView(grvCustomer.ItemsSource);
 
-            ////Tim mã kh
-            //if (re.MaKhachHang(filterText))
-            //{
-            //    cv.Filter = o =>
-            //    {
-            //        KhachHang kh = o as KhachHang;
-            //        return (ConvertToUnsign(kh.maKhachHang.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
-            //    };
-            //}
 
-            else if (!re.SoCMND(filterText))
-            {
-                cv.Filter = o =>
-                {
-                    KhachHang kh = o as KhachHang;
-                    return (ConvertToUnsign(kh.hoTen.ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
-                };
-            }
-          
-            else
-            {
-                KhachHangs = _db.KhachHang.ToList();
-                grvCustomer.ItemsSource = KhachHangs;
-            }
-        }
+        //    if (re.SoCMND(filterText))
+        //    {
+        //        cv.Filter = o =>
+        //        {
+        //            KhachHang kh = o as KhachHang;
+        //            return (ConvertToUnsign(kh.maKhachHang.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(kh.soCMND.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(kh.soDienThoai.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
+        //        };
+        //    }
+        //    //Tìm sdt
+        //    if (re.SoDienThoai(filterText))
+        //    {
+        //        cv.Filter = o =>
+        //        {
+        //            KhachHang kh = o as KhachHang;
+        //            return (ConvertToUnsign(kh.soDienThoai.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
+        //        };
+        //    }
+
+        //    ////Tim mã kh
+        //    //if (re.MaKhachHang(filterText))
+        //    //{
+        //    //    cv.Filter = o =>
+        //    //    {
+        //    //        KhachHang kh = o as KhachHang;
+        //    //        return (ConvertToUnsign(kh.maKhachHang.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
+        //    //    };
+        //    //}
+
+        //    else if (!re.SoCMND(filterText))
+        //    {
+        //        cv.Filter = o =>
+        //        {
+        //            KhachHang kh = o as KhachHang;
+        //            return (ConvertToUnsign(kh.hoTen.ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
+        //        };
+        //    }
+
+        //    else
+        //    {
+        //        KhachHangs = _db.KhachHang.ToList();
+        //        grvCustomer.ItemsSource = KhachHangs;
+        //    }
+        //}
 
         private void BtnThanhToan_Click(object sender, RoutedEventArgs e)
         {
@@ -487,6 +489,55 @@ namespace WpfApp2.Views
                 MessageBox.Show("Không có phí trể!");
                 dgvLateBill.Items.Clear();
                
+            }
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text.ToLower().Trim() == "")
+            {
+                KhachHangs = _db.KhachHang.Where(x => x.trangThaiXoa == false).ToList();
+                grvCustomer.ItemsSource = KhachHangs;
+                MessageBox.Show("Nhập thông tin tìm kiếm");
+            }
+            //search theo mã
+            else if ( cbbSearch.SelectedIndex == 0 && re.MaKhachHang(txtSearch.Text))
+            {
+                int textSearch = Int32.Parse(txtSearch.Text);
+                KhachHangs = _db.KhachHang.Where(x => x.trangThaiXoa == false && textSearch == x.maKhachHang).ToList();
+                grvCustomer.ItemsSource = KhachHangs;
+            }
+            //search theo họ tên
+            else if (cbbSearch.SelectedIndex == 1 && re.HoTen(txtSearch.Text))
+            {
+                string textSearch = txtSearch.Text;
+                KhachHangs = _db.KhachHang.Where(x => x.trangThaiXoa == false && textSearch == x.hoTen).ToList();
+                grvCustomer.ItemsSource = KhachHangs;
+            }
+            //search theo SDT
+            else if (cbbSearch.SelectedIndex == 2 && re.MaKhachHang(txtSearch.Text))
+            {
+                string textSearch = txtSearch.Text;
+                KhachHangs = _db.KhachHang.Where(x => x.trangThaiXoa == false && textSearch == x.soDienThoai).ToList();
+                grvCustomer.ItemsSource = KhachHangs;
+            }
+            //search theo CMND
+            else if (cbbSearch.SelectedIndex == 3 && re.MaKhachHang(txtSearch.Text))
+            {
+                string textSearch = txtSearch.Text;
+                KhachHangs = _db.KhachHang.Where(x => x.trangThaiXoa == false && textSearch == x.soCMND).ToList();
+                grvCustomer.ItemsSource = KhachHangs;
+            }
+            //search theo địa chỉ
+            else if (cbbSearch.SelectedIndex == 4 && re.DiaChi(txtSearch.Text))
+            {
+                string textSearch = txtSearch.Text;
+                KhachHangs = _db.KhachHang.Where(x => x.trangThaiXoa == false && textSearch == x.diaChi).ToList();
+                grvCustomer.ItemsSource = KhachHangs;
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy");
             }
         }
     }

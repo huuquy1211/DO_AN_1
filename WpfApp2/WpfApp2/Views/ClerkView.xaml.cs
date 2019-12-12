@@ -273,25 +273,67 @@ namespace WpfApp2.Views
             Application.Current.Resources["isAddClerk"] = Visibility.Visible;
         }
 
-        private void txtSearchNV_TextChanged(object sender, TextChangedEventArgs e)
+        //private void txtSearchNV_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    TextBox textBoxName = (TextBox)sender;
+        //    string filterText = textBoxName.Text;
+        //    ICollectionView cv = CollectionViewSource.GetDefaultView(grvResever.ItemsSource);
+
+
+        //    if (!string.IsNullOrEmpty(filterText))
+        //    {
+        //        cv.Filter = o =>
+        //        {
+        //            NhanVien p = o as NhanVien;
+        //            return (ConvertToUnsign(p.soDienThoai.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(p.hoTen.ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(p.soDienThoai.ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
+        //        };
+        //    }
+        //    if (txtSearchNV.Text == "")
+        //    {
+        //        NhanViens = _db.NhanVien.ToList();
+        //        grvResever.ItemsSource = NhanViens;
+        //    }
+        //}
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-            TextBox textBoxName = (TextBox)sender;
-            string filterText = textBoxName.Text;
-            ICollectionView cv = CollectionViewSource.GetDefaultView(grvResever.ItemsSource);
-
-
-            if (!string.IsNullOrEmpty(filterText))
-            {
-                cv.Filter = o =>
-                {
-                    NhanVien p = o as NhanVien;
-                    return (ConvertToUnsign(p.soDienThoai.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(p.hoTen.ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(p.soDienThoai.ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
-                };
-            }
-            if (txtSearchNV.Text == "")
+            if (txtSearchNV.Text.ToLower().Trim() == "")
             {
                 NhanViens = _db.NhanVien.ToList();
                 grvResever.ItemsSource = NhanViens;
+                MessageBox.Show("Nhập thông tin tìm kiếm");
+            }
+            //search theo mã
+            else if (cbbSearch.SelectedIndex == 0 && re.MaKhachHang(txtSearchNV.Text))
+            {
+                int textSearch = Int32.Parse(txtSearchNV.Text);
+                NhanViens = _db.NhanVien.Where(x => x.maNhanVien == textSearch).ToList();
+                grvResever.ItemsSource = NhanViens;
+            }
+            //search theo họ tên
+            else if (cbbSearch.SelectedIndex == 1 && re.HoTen(txtSearchNV.Text))
+            {
+                string textSearch = txtSearchNV.Text;
+                NhanViens = _db.NhanVien.Where(x => x.hoTen == textSearch).ToList();
+                grvResever.ItemsSource = NhanViens;
+            }
+            //search theo SDT
+            else if (cbbSearch.SelectedIndex == 2 && re.MaKhachHang(txtSearchNV.Text))
+            {
+                string textSearch = txtSearchNV.Text;
+                NhanViens = _db.NhanVien.Where(x => x.soDienThoai == textSearch).ToList();
+                grvResever.ItemsSource = NhanViens;
+            }
+            //search theo địa chỉ
+            else if (cbbSearch.SelectedIndex == 3 && re.DiaChi(txtSearchNV.Text))
+            {
+                string textSearch = txtSearchNV.Text;
+                NhanViens = _db.NhanVien.Where(x => x.diaChi == textSearch).ToList();
+                grvResever.ItemsSource = NhanViens;
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy");
             }
         }
     }

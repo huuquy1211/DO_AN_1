@@ -173,7 +173,6 @@ namespace WpfApp2.Views
                     btnThanhToanPhiTre.IsEnabled = true;
                 else
                     btnThanhToanPhiTre.IsEnabled = false;
-
             }
             else
             {
@@ -308,9 +307,6 @@ namespace WpfApp2.Views
                         var disk = _db.Dia.FirstOrDefault(x => x.maDia == item.maDia);
                         //---------------
                         disk.trangThai = 1;
-
-                        var title = disk.TuaDe;
-                        title.soLuong -= 1;
 
                         rentaldetail.maDia = item.maDia;
                         rentaldetail.Dia = _db.Dia.FirstOrDefault(x => x.maDia == item.maDia);

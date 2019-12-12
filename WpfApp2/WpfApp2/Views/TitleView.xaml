@@ -132,10 +132,25 @@
                         Width="200"
                         FontSize="14"
                         HorizontalAlignment="Right"
-                        materialDesign:HintAssist.Hint="Tìm kiếm"
+                        materialDesign:HintAssist.Hint="Tìm kiếm(ID, Tên Tựa Đề, Loại)"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         x:Name="txtSearch"
-                        materialDesign:TransitionAssist.DisableTransitions="True" Grid.Column="0"  TextChanged="TxtSearch_TextChanged"/>
+                        materialDesign:TransitionAssist.DisableTransitions="True" Grid.Column="0"  />
+                  
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="btnSearch"
+                         Margin="10,10,0,0"
+                        Grid.Column="1"
+                        Width="35"
+                        VerticalAlignment="Top"
+                            HorizontalAlignment="Left" Click="BtnSearch_Click"
+                            
+                        >
+
+                        <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Search" Width="25" Height="17" >
+                        </materialDesign:PackIcon>
+                    </Button>
                 </Grid>
                
             </Grid>

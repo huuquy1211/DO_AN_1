@@ -109,9 +109,6 @@ namespace WpfApp2.Views
             {
                 case 0:
                     Application.Current.Resources["isAddTitle"] = Visibility.Visible;
-
-
-
                     break;
 
             }
@@ -277,9 +274,9 @@ namespace WpfApp2.Views
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            
 
-                if (MessageBox.Show("Bạn chắc chắn muốn xóa tựa đề này?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+
+            if (MessageBox.Show("Bạn chắc chắn muốn xóa tựa đề này?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
                 MessageBox.Show("Tựa đề không được xóa");
             }
@@ -311,58 +308,59 @@ namespace WpfApp2.Views
 
         }
 
-        //private void BtnSearch_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (txtSearch.Text.ToLower().Trim() == "")
-        //    {
-        //        Titles = _db.TuaDe.Where(x => x.trangThai == true).ToList();
-        //        grvTitle.ItemsSource = Titles;
-        //    }
-        //    //search theo tên hoặc theo loại
-        //    else if (!re.SoCMND(txtSearch.Text.TrimEnd()))
-        //    {
-
-        //        Titles = _db.TuaDe.Where(x => x.tenTuaDe.Contains(txtSearch.Text) && x.trangThai == true || x.moTa.Contains(txtSearch.Text) && x.trangThai == true).ToList();
-        //        grvTitle.ItemsSource = Titles;
-        //    }
-        //    //search theo mã
-        //    else if (re.SoCMND(txtSearch.Text.TrimEnd()))
-        //    {
-        //        int m = Int32.Parse(txtSearch.Text);
-        //        Titles = _db.TuaDe.Where(x => x.maTuaDe == m && x.trangThai == true /*|| x.donGia ==m &&x.trangThai==true*/).ToList();
-        //        grvTitle.ItemsSource = Titles;
-        //    }
-
-        //}
-
-        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-            TextBox textBoxName = (TextBox)sender;
-            string filterText = textBoxName.Text;
-            ICollectionView cv = CollectionViewSource.GetDefaultView(grvTitle.ItemsSource);
-
-
-            if (!re.SoCMND(filterText))
+            if (txtSearch.Text.ToLower().Trim() == "")
             {
-                cv.Filter = o =>
-                {
-                    TuaDe kh = o as TuaDe;
-                    return ( ConvertToUnsign(kh.tenTuaDe.ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(kh.moTa.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) );
-                };
+                Titles = _db.TuaDe.Where(x => x.trangThai == true).ToList();
+                grvTitle.ItemsSource = Titles;
+                MessageBox.Show("Nhập thông tin tìm kiếm");
             }
-            else if(re.SoCMND(filterText))
+            //search theo tên hoặc theo loại
+            else if (!re.MaKhachHang(txtSearch.Text.TrimEnd()))
             {
-                cv.Filter = o =>
-                {
-                    TuaDe kh = o as TuaDe;
-                    return (ConvertToUnsign(kh.maTuaDe.ToString()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) );
-                };
-            }
-            else
-            {
-                Titles = _db.TuaDe.ToList();
+
+                Titles = _db.TuaDe.Where(x => x.tenTuaDe.Contains(txtSearch.Text) && x.trangThai == true || x.moTa.Contains(txtSearch.Text) && x.trangThai == true).ToList();
                 grvTitle.ItemsSource = Titles;
             }
+            //search theo mã
+            else if (re.MaKhachHang(txtSearch.Text.TrimEnd()))
+            {
+                int m = Int32.Parse(txtSearch.Text);
+                Titles = _db.TuaDe.Where(x => x.maTuaDe == m && x.trangThai == true ).ToList();
+                grvTitle.ItemsSource = Titles;
+            }
+
         }
+
+        //private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    TextBox textBoxName = (TextBox)sender;
+        //    string filterText = textBoxName.Text;
+        //    ICollectionView cv = CollectionViewSource.GetDefaultView(grvTitle.ItemsSource);
+
+
+        //    if (!re.SoCMND(filterText))
+        //    {
+        //        cv.Filter = o =>
+        //        {
+        //            TuaDe kh = o as TuaDe;
+        //            return (ConvertToUnsign(kh.tenTuaDe.ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())) || ConvertToUnsign(kh.moTa.ToString().ToUpper()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
+        //        };
+        //    }
+        //    else if (re.SoCMND(filterText))
+        //    {
+        //        cv.Filter = o =>
+        //        {
+        //            TuaDe kh = o as TuaDe;
+        //            return (ConvertToUnsign(kh.maTuaDe.ToString()).Contains(ConvertToUnsign(filterText.ToUpper().Trim())));
+        //        };
+        //    }
+        //    else
+        //    {
+        //        Titles = _db.TuaDe.ToList();
+        //        grvTitle.ItemsSource = Titles;
+        //    }
+        //}
     }
 }

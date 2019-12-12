@@ -119,21 +119,62 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <TextBox
                         VerticalAlignment="Top"
                         Width="200"
+                        Margin="0,10.5,0,0"
                         FontSize="14"
                         HorizontalAlignment="Right"
-                        materialDesign:HintAssist.Hint="Tìm kiếm"
+                       materialDesign:HintAssist.Hint="Tìm kiếm"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         x:Name="txtSearch"
-                       TextChanged="TxtSearch_TextChanged"
                         materialDesign:TransitionAssist.DisableTransitions="True" Grid.Column="0"  />
+                    
+                    
                 </Grid>
-                <Grid Grid.Column="1">
 
+                <Grid  Grid.Column="1">
+                    <ComboBox
+  materialDesign:HintAssist.Hint="Search"
+  IsEditable="True"
+                        Width="150"
+                       
+                       Margin="0,0,0,0"
+  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        Name="cbbSearch"
+                        >
+                        <ComboBoxItem
+    IsSelected="True">
+                            ID khách hàng
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Họ tên
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Số điện thoại
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Số chứng minh nhân dân
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            Địa chỉ
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Button
+                        Name="btnSearch"
+                         Margin="0,0,59,0"
+                        Width="35"
+                        Click="BtnSearch_Click"
+                        >
+                        <materialDesign:PackIcon Margin="-12,-9,-5,-80" Kind="Search" Width="25" Height="17" >
+                        </materialDesign:PackIcon>
+                    </Button>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">

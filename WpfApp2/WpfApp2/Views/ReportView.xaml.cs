@@ -207,8 +207,9 @@ namespace WpfApp2.Views
                 soLuongThue = _db.Dia.Count(s => s.TuaDe.maTuaDe == x.ChiTietPhieuThue.Dia.maTuaDe),
                 giaThue = (float)x.ChiTietPhieuThue.Dia.TuaDe.donGia,
                 phiTre = (float)x.PhiTre.FirstOrDefault(b => b.maPhieuTra == x.maPhieuTra).tongTien > 0 ? (float)x.PhiTre.FirstOrDefault(b => b.maPhieuTra == x.maPhieuTra).tongTien : 0,
-                thanhTien = (((float)x.ChiTietPhieuThue.Dia.TuaDe.donGia) * _db.Dia.Count(s => s.TuaDe.maTuaDe == x.ChiTietPhieuThue.Dia.maTuaDe) + ((float)x.PhiTre.FirstOrDefault(b => b.maPhieuTra == x.maPhieuTra).tongTien > 0 ? (float)x.PhiTre.FirstOrDefault(b => b.maPhieuTra == x.maPhieuTra).tongTien : 0))
-            }).Distinct().ToList();
+                thanhTien = (((float)x.ChiTietPhieuThue.Dia.TuaDe.donGia) * _db.Dia.Count(s => s.TuaDe.maTuaDe == x.ChiTietPhieuThue.Dia.maTuaDe) + ((float)x.PhiTre.FirstOrDefault(b => b.maPhieuTra == x.maPhieuTra).tongTien > 0 ? (float)x.PhiTre.FirstOrDefault(b => b.maPhieuTra == x.maPhieuTra).tongTien : 0)),
+                ngayTra = x.ngayTra.ToString()
+            }).ToList();
             dtgdoanhthu.ItemsSource = listDT;
             float t = 0;
             foreach (DoanhThuVM item in dtgdoanhthu.Items)
@@ -243,7 +244,7 @@ namespace WpfApp2.Views
                 try
                 {
                     StreamWriter sw = new StreamWriter("Danh sách tựa đề yêu thích.csv", false, Encoding.Unicode);
-                    sw.WriteLine(result.Replace(',',' '));
+                    sw.WriteLine(result);
                     sw.Close();
                     Process.Start("Danh sách tựa đề yêu thích.csv");
                 }
@@ -312,8 +313,11 @@ namespace WpfApp2.Views
                     dt.idDia = item.idDia;
                     dt.tenTuaDeDT = ConvertToUnsign(item.tenTuaDeDT);
                     dt.loaiTuaDeDT = ConvertToUnsign(item.loaiTuaDeDT);
+                    dt.soLuongThue = item.soLuongThue;
                     dt.giaThue = item.giaThue;
+                    dt.ngayTra = item.ngayTra;
                     dt.phiTre = item.phiTre;
+                    dt.thanhTien = item.thanhTien;
                     listPrint.Add(dt);
                 }
                 dtgdoanhthu.Visibility = Visibility.Collapsed;

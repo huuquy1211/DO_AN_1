@@ -16,5 +16,7 @@ namespace WpfApp2.ViewModel
 
         public float phiTre { get; set; }
         public float thanhTien { get; set; }
+
+        public string ngayTra { get; set; }
     }
 }

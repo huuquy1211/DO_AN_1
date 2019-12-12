@@ -249,6 +249,7 @@
                         <DataGridTextColumn Header="Ten tua de" Binding="{Binding tenTuaDeDT}"/>
                         <DataGridTextColumn Header="Loai" Binding="{Binding loaiTuaDeDT}"/>
                         <DataGridTextColumn Header="So dia da thue" Binding="{Binding soLuongThue}"/>
+                        <DataGridTextColumn Header="Ngay tra" Binding="{Binding ngayTra}"/>
                         <DataGridTextColumn Header="Gia thue" Binding="{Binding giaThue}"/>
                         <DataGridTextColumn Header="Phi tre" Binding="{Binding phiTre}"/>
                         <DataGridTextColumn Header="Thanh tien" Binding="{Binding thanhTien}"/>
